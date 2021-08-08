@@ -12,7 +12,7 @@ For 4YMM, see https://github.com/nicobrinkkemper/4ymm
 - OR `npm run build` - build final product in `build folder`
 
 ## Update level codes
-- download csv from this page https://docs.google.com/spreadsheets/d/1i_Cmbj3GTKtrIgm4tVGLrF0lwrVeVZCsRdSdlR3qYiw/edit#gid=0
+- download csv from this page https://docs.google.com/spreadsheets/d/1Yg9K2sKsn9UpJrJlQeDBILJXGAX0kHorfb5rnFY4Zd0/edit#gid=0
 - replace csv in `src/data`
 
 ## Add images
