@@ -1,38 +1,106 @@
+.ie-fixMinHeight {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-flow: column;
+  /* Center vertically */
+  align-items: center;
+
+  /*Center horizontaly */
+  justify-content: center;
+
+  /*Center horizontaly ie */
+  -ms-flex-pack: center;
+  width: 100%;
+  min-height:100vh;
+}
+
 .App {
+  display:flex;
+  align-items: center;
+  -ms-align-items: column;
+  justify-content: center;
+  -ms-justify-content: column;
+  flex-direction: column;
+  -ms-flex-direction: column;
   text-align: center;
+  background-image: url("assets/bg.png?size=512");
+  background-color: #0C2338;
+  background-repeat: repeat;
+  background-size: 512px 512px;
+  min-height: 100vh;
+  font-size: calc(10px + 2vmin);
+  color: #F6F7F8;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding-top:1em;
+  padding-bottom:1em;
+  
+  width: calc(100vw - 2em);
+  max-width: 30rem;
 }
-
+.App-body {
+  flex: 1 0 0;
+}
 .App-link {
   color: #61dafb;
 }
+.App-footer{
+  display: flex;
+  background-color: #0C2338;
+  padding: 1rem 0;
+  margin-top:2rem;
+  justify-content: center;
+  width: 100%;
+}
+.App-footer a:last-child {
+  padding-right:0;
+}
+.App-footer a {
+  font-size: .875rem;
+  color:#F6F7F8;
+  text-decoration: none;
+  padding-right:1rem;
+}
+.App-footer a + a {
+  padding-left:1rem;
+  border-left:1px solid #F6F7F8;
+}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.copy{
+  padding-top:2em;
+  padding-bottom:1em;
+}
+.youtubeFlexDisable{
+  padding:0 0 1rem 0;
+  display:block;
+  width: 100%;
+}
+
+.youtubeContainer{
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+}
+.youtubeContainer iframe{
+  position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+  height:100%;
+  background: none;
+}
+@media only screen and (min-width: 620px) {
+  .App-header{
+    min-width: 34.25rem;
   }
-  to {
-    transform: rotate(360deg);
+  .App-body{
   }
 }

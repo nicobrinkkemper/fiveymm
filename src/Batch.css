@@ -1,0 +1,75 @@
+.Batch{
+    display: flex;
+    flex-flow: column;
+}
+
+.Batch .Card{
+    padding:.5rem;
+}
+.Batch .LevelCard{
+    display:flex;
+    flex-flow: row;
+}
+.Batch .LevelCard .levelName{
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+.Batch .info{
+    padding:.5rem .85rem;
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+}
+.Batch .levelInfo{
+    display:flex;
+}
+.Batch .makerInfo{
+    display: flex;
+    flex:1 0 0;
+    text-align: left;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.Batch .makerName {
+    font-size: 0.77777777777rem;
+    flex:1 0 0;
+}
+.Batch .Card picture{
+    display:flex;
+}
+.Batch .Card picture img {
+    border-radius: .25rem;
+}
+.Batch .nationality{
+    margin-right:.45rem;
+}
+.Batch .difficulty{
+    font-size: .75rem;
+    align-self: flex-end;
+    justify-self: flex-end;
+}
+
+.Batch .tags {
+    align-self: flex-end;
+    padding-top:.2rem;
+    padding-right:.2rem;
+    flex: 1 0 0;
+    display: grid;
+    grid-template-columns: max-content max-content;
+    grid-template-rows: max-content;
+    grid-gap: .3rem;
+  }
+
+  
+@media only screen and (max-width: 370px) {
+    .Batch .Card picture{
+        display:none;
+    }
+}
+@media only screen and (max-width: 320px) {
+    .Batch .tags{
+        grid-template-columns: max-content;
+        grid-template-rows: max-content max-content;
+    }
+}

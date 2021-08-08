@@ -1,0 +1,68 @@
+
+.Teaser{
+  width:calc(100vw - 2rem);
+  max-width:35rem;
+}
+.Teaser .Logo {
+  height: 40vmin;
+  pointer-events: none;
+  padding-bottom:2em;
+}
+.Teaser .App-link {
+  color: #61dafb;
+}
+
+.Teaser header{
+  max-width: 100%;
+}
+.Teaser .youtubeWrapper{
+  flex:1;
+}
+.Teaser .youtubeContainer{
+  flex:1;
+  max-width:100vw;
+  overflow:hidden;
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  border:1px solid black;
+  background:black;
+}
+.Teaser .youtubeContainer iframe, .youtubeContainer object, .youtubeContainer embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+  
+  
+  
+.Teaser .countdown{
+    line-break: loose;
+    padding-top:1rem;
+    display:grid;
+    grid-auto-columns: auto;
+    column-gap: .75rem;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    color:#F6F7F8;
+  }
+  @media only screen and (max-width: 450px) {
+    .Teaser .countdown {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media only screen and (max-width: 160px) {
+    .Teaser .countdown {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .Teaser .copy{
+    padding-top:2em;
+    padding-bottom:1em;
+    color:#F6F7F8;
+  }
+  

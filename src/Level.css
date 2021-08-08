@@ -1,0 +1,113 @@
+.Level{
+    display: flex;
+    flex-flow: column;
+}
+
+.Level .Card{
+    padding:.5rem;
+}
+.mii{
+    align-self: center;
+    justify-self: center;
+    flex:1 0 0;
+}
+.makerDescription{
+    padding-top:1rem;
+    white-space:pre-line;
+}
+
+.Level .makerCard{
+    display: flex;
+    flex-flow: column;
+
+}
+
+.Level .levelInfo{
+    display:flex;
+}
+.Level .levelName{
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+}
+.Level .makerInfo{
+    display: flex;
+    flex:1 0 0;
+    padding-bottom:.5rem;
+    text-align: left;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.Level .makerName {
+    font-size: 1rem;
+    flex:1 0 0;
+    margin-top:.5rem;
+}
+.Level .nationality{
+    margin-right:.45rem;
+}
+.Level .levelCard picture{
+    display: flex;
+}
+.Level .levelCode{
+    font-size:1rem;
+    background: #C60034;
+    border-radius: 0px 0px .25rem .25rem;
+    color:white;
+    padding:1rem;
+    margin-bottom:1rem;;
+}
+
+.Level .info{
+    padding:.5rem .5rem;
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+}
+.Level .levelInfo{
+    display:flex;
+}
+
+
+.Level .difficulty{
+    font-size: .75rem;
+    align-self: flex-end;
+    justify-self: flex-end;
+}
+
+.Level .tags {
+    align-self: flex-end;
+    padding-top:.2rem;
+    padding-right:.2rem;
+    flex: 1 0 0;
+    display: grid;
+    grid-template-columns: max-content max-content;
+    grid-template-rows: max-content;
+    grid-gap: .3rem;
+  }
+
+.Level .description{
+    white-space:pre-line;
+    padding-top:1rem;
+}
+.Level .Button.arrow-left{
+    margin: 0 1rem 0 0;
+    width:5.125rem;
+}
+.Level .Icon.arrow-left{
+    margin: 0;
+  }
+
+.Level .arrow-right{
+    align-self: flex-end;
+    justify-self: flex-end;
+}
+
+.Level .navigation.hasNextLevel{
+    display: flex;
+    justify-content: flex-end;
+}
+.Level .navigation.hasNextLevel.hasPreviousLevel{
+    display: flex;
+    justify-content: space-between;
+}

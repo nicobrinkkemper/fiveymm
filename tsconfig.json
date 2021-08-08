@@ -6,6 +6,13 @@
       "dom.iterable",
       "esnext"
     ],
+    "types": [
+      "jest", 
+      "node",
+      "webpack-env"
+    ],
+    "baseUrl": "src",
+    "rootDir": "src",
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,

@@ -1,10 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
-ReactDOM.render(
+import './index.css';
+import { render as reactRender } from 'react-snapshot';
+import 'react-app-polyfill/ie9';
+import 'react-app-polyfill/ie11';
+import 'react-app-polyfill/stable';
+import * as FullStory from '@fullstory/browser';
+setTimeout(()=>{
+  FullStory.init({ orgId: 'W54CA', namespace: 'FS' });
+},100)
+reactRender(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
