@@ -1,5 +1,5 @@
 /// <reference types="react-scripts" />
-declare module 'react-snapshot' {
+declare module 'react-snap' {
     import * as ReactDOM from 'react-dom';
     let render: ReactDOM.Renderer;
   }

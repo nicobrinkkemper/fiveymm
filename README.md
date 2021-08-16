@@ -4,7 +4,12 @@ For 4YMM, see https://github.com/nicobrinkkemper/4ymm
 
 ## Prerequisites
 - Have `npm` installed. It comes with Node.js which you can install from their site https://nodejs.org/en/
-
+- If you get pupperteer issues when building, install following `sudo apt-get install chromium-browser` and/or install any missing package listed in error message, for example
+  ```sh
+  sudo apt-get install libxcursor1
+  sudo apt-get install libxss1
+  sudo apt install libgtk-3-0
+  ```
 ## Installing
 
 - `npm install` - install all dependencies in `node_modules`
@@ -37,7 +42,7 @@ See below `Available Scripts` to get you up and running. These scripts correspon
 
 - The final build of the `React` app is not connected with any API or external data file. All data must be present during the buildstep, and all data will be included in the Javascript bundle. 
 
-- Level pages will only be statically rendered to `.html` files if the current date allows for those levels to be released. However, these files are not neccecary for the site to function. This is because `react-snapshot` will crawl the page for further SEO and accesability improvements. All data located in `src/data` will be in the bundle, and the react app can display the pages purely by this data alone.
+- Level pages will only be statically rendered to `.html` files if the current date allows for those levels to be released. However, these files are not neccecary for the site to function. This is because `react-snap` will crawl the page for further SEO and accesability improvements. All data located in `src/data` will be in the bundle, and the react app can display the pages purely by this data alone.
 
 - The files ending with `.mdx` located in `src/data` can be used to update the copy of the website. These files work the same as the `.csv` file located in `src/data`, meaning the `.mdx` files are also incoorporated in the final bundle in the `build` folder. You can find these files on the Google Drive.
 

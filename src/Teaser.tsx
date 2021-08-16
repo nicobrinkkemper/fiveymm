@@ -3,14 +3,15 @@ import CountDown, { CountdownRenderProps } from "react-countdown";
 import "./Teaser.css";
 import YouTube from "react-youtube";
 import { startDate } from "levelData";
-import { Link } from "react-router-dom";
+import Button from "Button";
+import { production, snap } from "environment";
 const trailerYtId = "5hKTIAXIqn4";
 const Completionist = () => {
   return (
     <span style={{ display: "flex", margin: "1rem 0", color: "#000" }}>
-      <Link to="/" style={{ color: "#000" }}>
-        Refresh this page!
-      </Link>
+      <Button primary={true} icon="arrow-right" to="/levels">
+        To the levels
+      </Button>
     </span>
   );
 };
@@ -53,10 +54,16 @@ const renderer = ({
 };
 
 const Teaser = () => {
+  const renderIframe = production && snap;
   return (
     <div className="Teaser">
       <div className="youtubeWrapper">
-        <YouTube containerClassName="youtubeContainer" videoId={trailerYtId} />
+        {renderIframe ? (
+          <YouTube
+            containerClassName="youtubeContainer"
+            videoId={trailerYtId}
+          />
+        ) : null}
       </div>
       <CountDown
         date={startDate.getTime()}

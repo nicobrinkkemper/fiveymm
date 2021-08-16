@@ -1,3 +1,5 @@
+import NotFound from "NotFound";
+
 function ErrorFallback({
   error,
   resetErrorBoundary,
@@ -6,11 +8,7 @@ function ErrorFallback({
   resetErrorBoundary: (...args: Array<unknown>) => void;
 }) {
   return (
-    <div role="alert">
-      <p>Something went wrong:</p>
-      <pre>{error.message}</pre>
-      <button onClick={resetErrorBoundary}>Try again</button>
-    </div>
+    <NotFound />
   );
 }
 

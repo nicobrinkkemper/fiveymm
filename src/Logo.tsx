@@ -1,39 +1,50 @@
-import React, { PropsWithChildren } from 'react'
-import logoWithCardFallback from './assets/logo_with_card.png';
-import logoWithoutCardFallback from './assets/logo_without_card.png';
-import { Link } from 'react-router-dom';
-const svgs = {
-    "logo_with_card": (<picture className="Svg-picture">
-        <img src={logoWithCardFallback} className="Svg-img" alt="logo" />
-    </picture>),
-    "logo_without_card": (<picture className="Svg-picture">
-        <img src={logoWithoutCardFallback} className="Svg-img" alt="logo" />
-    </picture>),
-}
+import React, { PropsWithChildren } from "react";
+import logo1x from "./assets/logo_with_card1x.png";
+import logo2x from "./assets/logo_with_card2x.png";
+import logo3x from "./assets/logo_with_card3x.png";
+import simpleLogo1x from "./assets/logo_without_card1x.png";
+import simpleLogo2x from "./assets/logo_without_card2x.png";
+import simpleLogo3x from "./assets/logo_without_card3x.png";
+import { Link } from "react-router-dom";
+const logos = {
+  logo_with_card: (
+    <picture className="Picture">
+      <source srcSet={`${logo2x} 2x, ${logo3x} 3x`} />
+      <img src={logo1x} className="Picture-img" alt="logo" width="100%" />
+    </picture>
+  ),
+  logo_without_card: (
+    <picture className="Picture">
+      <source
+        srcSet={`${simpleLogo2x} 2x, ${simpleLogo3x} 3x`}
+      />
+      <img src={simpleLogo1x} className="Picture-img" alt="logo" width="100%" />
+    </picture>
+  )
+};
 
 export type LogoProps = PropsWithChildren<{
-    svg?: keyof typeof svgs;
-    small?: boolean;
-}>
+  logo?: keyof typeof logos;
+  small?: boolean;
+}>;
 
-const createSvg = (svg: keyof typeof svgs) => {
-    return () => (<span className={["Svg", svg].join(' ')}>
-        {svgs[svg]}
-    </span>)
-}
+const createPicture = (logo: keyof typeof logos) => {
+  return () => (
+    <span className={["Picture", logo].join(" ")}>{logos[logo]}</span>
+  );
+};
 
-
-const Logo = ({ svg = "logo_with_card", small = false }: LogoProps) => {
-    const classList = ['Logo']
-    const Svg = createSvg(svg)
-    if(small) classList.push('small')
-    return (
-        <div className={classList.join(" ")}>
-            <Link to="/">
-                <Svg />
-            </Link>
-        </div>
-    )
-}
-export {Logo}
-export default Logo
+const Logo = ({ logo = "logo_with_card", small = false }: LogoProps) => {
+  const classList = ["Logo"];
+  const Picture = createPicture(logo);
+  if (small) classList.push("small");
+  return (
+    <div className={classList.join(" ")}>
+      <Link to="/">
+        <Picture />
+      </Link>
+    </div>
+  );
+};
+export { Logo };
+export default Logo;

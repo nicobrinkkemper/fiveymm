@@ -1,15 +1,18 @@
-import React from "react";
-
-import Card from "Card";
 import "./Level.css";
+import React from "react";
+import Card from "Card";
 import { getLevelData, releaseDays } from "levelData";
 import { useParams } from "react-router-dom";
-import { snakeCase, lowerCase } from "lodash";
-import Stars from "Stars";
-import {Button} from "Button";
+import { Stars } from "Stars";
+import { Button } from "Button";
+import { levelPath } from "levelPath";
+import { makerPath } from "makerPath";
+import Seo from "Seo";
+import { DEFAULT_TITLE } from "./constants";
 
 const Level = () => {
-  const { batchNumber: strBatchNumber, order: strOrder } = useParams<Record<'batchNumber'|'order',string>>();
+  const { batchNumber: strBatchNumber, order: strOrder } =
+    useParams<Record<"batchNumber" | "order", string>>();
   const order = Number(strOrder);
   const levelData = getLevelData();
   const batchLevels = levelData.levels(Number(strBatchNumber));
@@ -24,11 +27,7 @@ const Level = () => {
   const classList = ["Level"];
   const isNew = levelData.newestBatch === batchNumber - 1;
   const isUnreleased = levelData.releasedBatches.indexOf(releaseDay) === -1;
-  const transformName = (name: string) => snakeCase(name.toLowerCase());
-  const levelPath = (levelName: string, width = 480) =>
-    `./levelImages/${transformName(levelName)}-${width}.png`;
-  const makerPath = (makerName: string, width = 500) =>
-    `./makerImages/${transformName(makerName)}-${width}.png`;
+
   const tags = level.tags.split(",");
   const hasPreviousLevel = Number(order) > startOrder;
   const hasNextLevel = endOrder > Number(order);
@@ -37,6 +36,7 @@ const Level = () => {
   if (hasNextLevel) navigationClasslist.push("hasNextLevel");
   if (isNew) classList.push("isNew");
   if (isUnreleased) return <span>This level hasn't been released yet</span>;
+
   return (
     <div className="Level">
       <Card>
@@ -45,18 +45,16 @@ const Level = () => {
             <div className="makerInfo">
               <span className={"levelName"}>{level.levelName}</span>
             </div>
-            <picture>
+            <picture className="levelPicture">
               <source
                 srcSet={`
-                  ${levelPath(level.levelName, 480)} 480w,
-                  ${levelPath(level.levelName, 960)} 960w,
-                  ${levelPath(level.levelName, 1280)} 1280w,
-                  ${levelPath(level.levelName, 1920)} 1920w`}
+                  /${levelPath(level.levelName, 960)} 2x,
+                  /${levelPath(level.levelName, 1280)} 3x,
+                  /${levelPath(level.levelName, 1920)} 4x`}
               />
               <img
-                src={`./levelImages/${transformName(level.levelName)}-480.png`}
-                style={{ width: "100%", objectFit: "cover" }}
-                alt="level screenshot"
+                src={`/${levelPath(level.levelName)}`}
+                alt={`Screenshot: ${level.levelName}`}
               />
             </picture>
             <div className="levelCode">
@@ -85,30 +83,19 @@ const Level = () => {
       <Card>
         <div className="makerCard">
           <div className="info">
-            <picture className="mii">
-              <source
-                srcSet={`
-              ${makerPath(level.makerName, 250)} 250w,
-              ${makerPath(level.makerName, 500)} 500w,
-          `}
-              />
+            <picture className="miiPicture">
+              <source srcSet={`/${makerPath(level.makerName, 500)} 2x`} />
               <img
-                src={`./makerImages/${transformName(level.makerName)}-500.png`}
-                style={{
-                  height: "6.125rem",
-                  width: "6.125rem",
-                  objectFit: "cover",
-                }}
-                alt="maker's mii screenshot"
+                src={makerPath(level.makerName)}
+                alt={`${level.makerName} Mii`}
               />
             </picture>
             <div className={"makerName"}>
               <span
-                className={`nationality flag-icon flag-icon-${lowerCase(
-                  level.nationality
-                )}`}
+                className={`nationality flag-icon flag-icon-${level.nationality.toLowerCase()}`}
               />
               <span className="name">{level.makerName}</span>
+              <span className="makerId">{level.makerId}</span>
             </div>
             <p className="makerDescription" style={{ whiteSpace: "pre-line" }}>
               {level.makerDescription}
@@ -133,8 +120,14 @@ const Level = () => {
           </Button>
         ) : null}
       </div>
+      <Seo
+        description={`${DEFAULT_TITLE} level by ${level.makerName}: ${level.levelName} - ${level.levelCode}`}
+        title={`${level.levelName} | ${level.levelCode} | ${DEFAULT_TITLE}`}
+        image={`${levelPath(level.levelName)}`} // do not prepend '/'
+        twitter="summary_large_image"
+      />
     </div>
   );
-}
-export {Level}
+};
+export { Level };
 export default Level;

@@ -2,7 +2,7 @@
 import React from 'react';
 
 import './About.css';
-import { useLocation, useHistory, Router } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import { importMDX } from 'mdx.macro';
 import AccordionLayout, { accordionComponents } from 'AccordionLayout';
 const CloseSvg = () => (

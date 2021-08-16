@@ -18,7 +18,7 @@
     font-family: 'SuperMario', sans-serif;
 }
 .Batches .Batch .batchNumber.isNew {
-    background-color: #F7941D;
+    background-color: #FACD00;
 }
 .Batches .Batch .releaseInfo{
     display: flex;
@@ -36,11 +36,11 @@
     line-height: 1rem;
 }
 .Batches .Batch.isUnreleased .batchNumber{
-    background-color: #C4C4C4;
+    background-color: #194670;
     color:inherit
 }
 .Batches .Batch.isNew .batchNumber{
-    background-color: #F7941D;
+    background-color: #FACD00;
 }
 .Batches .Batch .new, .Batch.isUnreleased .unreleased{
     line-height: .8125rem;
@@ -53,18 +53,19 @@
     padding:.25rem .5rem;
 }
 .Batches .Batch.isNew .new{
-    background-color: #F7941D;
+    background-color: #AF044A;
     color:#F6F7F8;
 }
 .Batches .Batch .unreleased{
-    background-color: #CCCCCC;
+    background-color: black;
 }
 
 .Batches .Card.disabled{
+    background:#0C2338;
     opacity: .5;
 }
 .Batches .Card.disabled + .Card.disabled{
-    opacity: .25;
+    opacity: .3;
 }
 .Batches .Card.disabled + .Card.disabled + .Card.disabled{
     opacity: .1;

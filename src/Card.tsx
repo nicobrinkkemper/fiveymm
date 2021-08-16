@@ -1,12 +1,13 @@
 import React, { PropsWithChildren } from 'react'
-import marioCake from './assets/illustration_mario_cake_yellow.svg'
-import marioCakeFallback from './assets/illustration_mario_cake_yellow.png'
+import marioCake1x from './assets/illustration_mario1x.png'
+import marioCake2x from './assets/illustration_mario2x.png'
+import marioCake3x from './assets/illustration_mario3x.png'
 import { Link, LinkProps } from 'react-router-dom'
 
 const illustrations = {
     "mario_cake": (<picture className="Illustration-picture">
-        <source srcSet={marioCake} type="image/svg+xml" />
-        <img src={marioCakeFallback} className="Illustration-img" alt="logo" />
+        <source srcSet={`${marioCake1x}, ${marioCake2x} 2x, ${marioCake3x} 3x`} />
+        <img src={marioCake1x} className="Illustration-img" alt="Mario wants CAKE!" />
     </picture>)
 }
 

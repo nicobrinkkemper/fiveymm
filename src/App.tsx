@@ -21,6 +21,11 @@ import Batches from "Batches";
 import Batch from "Batch";
 import { ErrorBoundary } from "react-error-boundary";
 import { ErrorFallback } from "./ErrorFallback";
+import { weekTrailers } from "weekTrailers";
+import { Seo } from "Seo";
+import { DEFAULT_TITLE, DEFAULT_DESCRIPTION } from "./constants";
+import NotFound from "NotFound";
+import { production, snap } from "environment";
 
 const Welcome = importMDX.sync("./data/Welcome.mdx");
 
@@ -77,33 +82,26 @@ const BackButton = () => {
   );
 };
 
-const weekTrailers = [
-  "iY6Qj6L_oF0",
-  "WUWn1gQIs_8",
-  "AdKyII4NjvQ",
-  "PBVWDbYInLw",
-  "SbYdb2UvH78",
-  "riPeVvp6Zzo",
-  "8zSCJDWJUvM",
-  "OHwd3qGiFOU"
-];
 const WeekTrailer = () => {
   const { batchNumber } = useParams<{ batchNumber: string }>();
   const weekTrailer = weekTrailers[Number(batchNumber) - 1];
+  const renderIframe = production && snap;
   return (
     <div className="youtubeFlexDisable">
-      <YouTube
-        containerClassName="youtubeContainer"
-        videoId={weekTrailer || "iY6Qj6L_oF0"}
-        opts={{
-          playerVars: {
-            modestbranding: 1,
-            rel: 0,
-            loop: 1,
-            listType: "playlist"
-          }
-        }}
-      />
+      {renderIframe ? (
+        <YouTube
+          containerClassName="youtubeContainer"
+          videoId={weekTrailer || "iY6Qj6L_oF0"}
+          opts={{
+            playerVars: {
+              modestbranding: 1,
+              rel: 0,
+              loop: 1,
+              listType: "playlist"
+            }
+          }}
+        />
+      ) : null}
     </div>
   );
 };
@@ -115,7 +113,7 @@ const App = () => {
     <Route path="/credits">
       <header className="App-header">
         <div className="toolbar big">
-          <Logo svg="logo_without_card" />
+          <Logo logo="logo_without_card" />
           <Button inverted={true} icon={"info-inverted"} to="#!/about">
             About
           </Button>
@@ -134,7 +132,7 @@ const App = () => {
         <Route path="/">
           <header className="App-header">
             <div className="toolbar small">
-              <Logo small svg="logo_without_card" />
+              <Logo small logo="logo_without_card" />
               <Button inverted={true} icon={"info-inverted"} to="#!/about">
                 About
               </Button>
@@ -143,14 +141,18 @@ const App = () => {
           <article className="App-body">
             <Teaser />
           </article>
+          <Seo
+            description={`${DEFAULT_DESCRIPTION}. We will start ${startDate.toDateString()}`}
+            title={`${DEFAULT_TITLE} | We are getting ready`}
+          />
         </Route>
       </Switch>
     ) : (
       <Switch>
-        <Route path="/level/:batchNumber/:order">
+        <Route path="/level/:batchNumber/:order" exact={true}>
           <header className="App-header">
             <div className="toolbar small">
-              <Logo small svg="logo_without_card" />
+              <Logo small logo="logo_without_card" />
               <Button inverted={true} icon={"info-inverted"} to="#!/about">
                 About
               </Button>
@@ -161,10 +163,10 @@ const App = () => {
             <Level />
           </article>
         </Route>
-        <Route path="/levels/:batchNumber">
+        <Route path="/levels/:batchNumber" exact={true}>
           <header className="App-header">
             <div className="toolbar small">
-              <Logo small svg="logo_without_card" />
+              <Logo small logo="logo_without_card" />
               <Button inverted={true} icon={"info-inverted"} to="#!/about">
                 About
               </Button>
@@ -176,10 +178,10 @@ const App = () => {
             <Batch />
           </article>
         </Route>
-        <Route path="/levels">
+        <Route path="/levels" exact={true}>
           <header className="App-header">
             <div className="toolbar big">
-              <Logo svg="logo_without_card" />
+              <Logo logo="logo_without_card" />
               <Button inverted={true} icon={"info-inverted"} to="#!/about">
                 About
               </Button>
@@ -191,7 +193,7 @@ const App = () => {
           </article>
         </Route>
         {creditRoute}
-        <Route path="/">
+        <Route path="/" exact={true}>
           <header className="App-header">
             <div className="toolbar big">
               <Logo />
@@ -202,6 +204,17 @@ const App = () => {
           </header>
           <article className="App-body">
             <Welcome />
+            <Seo title={`${DEFAULT_TITLE} | ${DEFAULT_DESCRIPTION}`} />
+          </article>
+        </Route>
+        <Route path="*">
+          <header className="App-header">
+            <div className="toolbar big">
+              <Logo />
+            </div>
+          </header>
+          <article className="App-body">
+            <NotFound />
           </article>
         </Route>
       </Switch>
