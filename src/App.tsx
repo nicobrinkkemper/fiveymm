@@ -7,20 +7,17 @@ import {
   Route,
   Switch,
   useLocation,
-  useParams,
-  BrowserRouter
+  useParams
 } from "react-router-dom";
 import { Logo } from "Logo";
 import { Button } from "Button";
 import { importMDX } from "mdx.macro";
-import { releaseDays, startDate } from "levelData";
+import { releaseDays, startDate } from "useLevelData";
 import YouTube from "react-youtube";
 import { Credits } from "Credits";
 import { Level } from "Level";
 import Batches from "Batches";
 import Batch from "Batch";
-import { ErrorBoundary } from "react-error-boundary";
-import { ErrorFallback } from "./ErrorFallback";
 import { weekTrailers } from "weekTrailers";
 import { Seo } from "Seo";
 import { DEFAULT_TITLE, DEFAULT_DESCRIPTION } from "./constants";
@@ -85,10 +82,8 @@ const BackButton = () => {
 const WeekTrailer = () => {
   const { batchNumber } = useParams<{ batchNumber: string }>();
   const weekTrailer = weekTrailers[Number(batchNumber) - 1];
-  const renderIframe = production && snap;
   return (
     <div className="youtubeFlexDisable">
-      {renderIframe ? (
         <YouTube
           containerClassName="youtubeContainer"
           videoId={weekTrailer || "iY6Qj6L_oF0"}
@@ -101,7 +96,6 @@ const WeekTrailer = () => {
             }
           }}
         />
-      ) : null}
     </div>
   );
 };
@@ -220,47 +214,35 @@ const App = () => {
       </Switch>
     );
   return (
-    <div
-      className="App"
-      style={showAbout ? { overflowY: "hidden", maxHeight: "100vh" } : {}}
-    >
-      <div className="ie-fixMinHeight">
-        {routes}
-        <About />
-        <footer className="App-footer">
-          <a
-            href="https://discord.gg/yqdgu2Z"
-            rel="noopener noreferrer"
-            target="_BLANK"
-          >
-            Discord
-          </a>
-          <a
-            href="https://www.youtube.com/channel/UClayAs7TxVjMbzBLxBbqyoQ"
-            rel="noopener noreferrer"
-            target="_BLANK"
-          >
-            Youtube
-          </a>
-          <Link to="/credits">Credits</Link>
-        </footer>
+      <div
+        className="App"
+        style={showAbout ? { overflowY: "hidden", maxHeight: "100vh" } : {}}
+      >
+        <div className="ie-fixMinHeight">
+          {routes}
+          <About />
+          <footer className="App-footer">
+            <a
+              href="https://discord.gg/yqdgu2Z"
+              rel="noopener noreferrer"
+              target="_BLANK"
+            >
+              Discord
+            </a>
+            <a
+              href="https://www.youtube.com/channel/UClayAs7TxVjMbzBLxBbqyoQ"
+              rel="noopener noreferrer"
+              target="_BLANK"
+            >
+              Youtube
+            </a>
+            <Link to="/credits">Credits</Link>
+          </footer>
+        </div>
       </div>
-    </div>
   );
 };
-const AppWrapper = () => (
-  <ErrorBoundary
-    FallbackComponent={ErrorFallback}
-    onReset={() => {
-      // reset the state of your app so the error doesn't happen again
-    }}
-  >
-    <BrowserRouter>
-      <div className="App-wrapper">
-        <App />
-      </div>
-    </BrowserRouter>
-  </ErrorBoundary>
-);
 
-export default AppWrapper;
+export default App;
+
+export { App };

@@ -1,12 +1,12 @@
 import "./index.css";
 import React from "react";
 import "./index.css";
-import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { hydrate, render } from "react-dom";
 import * as FullStory from "@fullstory/browser";
 import TagManager from "react-gtm-module";
 import { production, snap } from "environment";
+import { AppWrapper } from "AppWrapper";
 
 const tagManagerArgs = {
   gtmId: "G-J20RKJ4B98"
@@ -15,7 +15,7 @@ const tagManagerArgs = {
 const rootElement = document.getElementById("root");
 const AppJSX = (
   <React.StrictMode>
-    <App />
+    <AppWrapper />
   </React.StrictMode>
 );
 if (rootElement?.hasChildNodes()) {

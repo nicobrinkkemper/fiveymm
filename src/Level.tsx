@@ -1,7 +1,7 @@
 import "./Level.css";
 import React from "react";
 import Card from "Card";
-import { getLevelData, releaseDays } from "levelData";
+import { useLevelData, releaseDays } from "useLevelData";
 import { useParams } from "react-router-dom";
 import { Stars } from "Stars";
 import { Button } from "Button";
@@ -14,7 +14,7 @@ const Level = () => {
   const { batchNumber: strBatchNumber, order: strOrder } =
     useParams<Record<"batchNumber" | "order", string>>();
   const order = Number(strOrder);
-  const levelData = getLevelData();
+  const levelData = useLevelData();
   const batchLevels = levelData.levels(Number(strBatchNumber));
   const level = batchLevels.find(({ order: _order }) => _order === order);
   if (typeof level !== "object") return <span>There is nothing here.</span>;
@@ -35,7 +35,7 @@ const Level = () => {
   if (hasPreviousLevel) navigationClasslist.push("hasPreviousLevel");
   if (hasNextLevel) navigationClasslist.push("hasNextLevel");
   if (isNew) classList.push("isNew");
-  if (isUnreleased) return <span>This level hasn't been released yet</span>;
+  if (isUnreleased) return <span>This level hasn't been released yet.</span>;
 
   return (
     <div className="Level">

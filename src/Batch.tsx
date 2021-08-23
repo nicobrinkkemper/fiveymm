@@ -1,23 +1,26 @@
 import "./Batch.css";
 import React from "react";
 import Card from "Card";
-import { getLevelData, releaseDays } from "levelData";
+import { useLevelData, releaseDays } from "useLevelData";
 import { useParams } from "react-router-dom";
 import { lowerCase } from "lodash";
 import Stars from "Stars";
 import { levelPath } from "levelPath";
 import Seo from "Seo";
 import { DEFAULT_TITLE } from "./constants";
+import { humanReadableArray } from "humanReadableArray";
 const Batch = () => {
   const { batchNumber } = useParams<Record<"batchNumber", string>>();
   const releaseDay = releaseDays[Number(batchNumber) - 1];
-  const levelData = getLevelData();
+  const {newestBatch, releasedBatches, levels} = useLevelData();
   const classList = ["Batch"];
-  const isNew = levelData.newestBatch === Number(batchNumber) - 1;
-  const batchLevels = levelData.levels(Number(batchNumber));
-  const isUnreleased = levelData.releasedBatches.indexOf(releaseDay) === -1;
+  const isNew = newestBatch === Number(batchNumber) - 1;
+  const batchLevels = levels(Number(batchNumber));
+  const isUnreleased = releasedBatches.indexOf(releaseDay) === -1;
+  batchLevels.map(({levelName})=>levelName).join(', ')
   if (isNew) classList.push("isNew");
   if (isUnreleased) return <span>...</span>;
+  const levelNames = batchLevels.map(({levelName})=>levelName);
   return (
     // keep this wrapper for react-snap weirdness
     <>
@@ -76,8 +79,8 @@ const Batch = () => {
                 </div>
               </div>
               <Seo
-                description={`This week released at ${releaseDay.toDateString()}. 8 awesome levels for you to play!`}
-                title={`${DEFAULT_TITLE} Week ${batchNumber}`}
+                description={`Week 2 of 5YMM has started! In this week's trailer we show off eight new levels: ${humanReadableArray(levelNames)}. Celebrating Five years of MarioMaker! Week 2 released at ${releaseDay.toDateString()}.`}
+                title={`${DEFAULT_TITLE} | Week ${batchNumber}`}
               />
             </Card>
           );

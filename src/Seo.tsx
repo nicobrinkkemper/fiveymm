@@ -1,4 +1,4 @@
-import { startDate } from "levelData";
+import { startDate } from "useLevelData";
 import React from "react";
 import Helmet from "react-helmet";
 import { BASE_URL, DEFAULT_DESCRIPTION, DEFAULT_TITLE } from "./constants";
@@ -33,6 +33,7 @@ const getMetaTags = ({
   const metaTags = [
     { itemprop: "name", content: title },
     { itemprop: "description", content: description },
+    { name: "viewport", content: `width=device-width,initial-scale=1`},
     { name: "description", content: description },
     { name: "twitter:title", content: `${title} | ${BASE_URL}` },
     { name: "twitter:description", content: description },
@@ -98,7 +99,6 @@ type getLinkTagsProps = {
   path: string
 }
 const getLinkTags = ({path}:getLinkTagsProps)=>[
-  { name: "viewport", content: `width=device-width, initial-scale=1`},
   { rel: "canonical", href: absoluteUrl(path) },
   { rel: "icon", href: `${absoluteUrl(path)}favicon.ico`},
   { rel: "icon", sizes:"16x16", href: `${absoluteUrl(path)}favicon-16x16.png`},

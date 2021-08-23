@@ -2,7 +2,7 @@ import React from "react";
 import CountDown, { CountdownRenderProps } from "react-countdown";
 import "./Teaser.css";
 import YouTube from "react-youtube";
-import { startDate } from "levelData";
+import { startDate } from "useLevelData";
 import Button from "Button";
 import { production, snap } from "environment";
 const trailerYtId = "5hKTIAXIqn4";

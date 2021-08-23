@@ -2,12 +2,12 @@
 import "./Batches.css";
 import React from "react";
 import Card from "Card";
-import { getLevelData, releaseDays } from "levelData";
+import { useLevelData, releaseDays } from "useLevelData";
 import Seo from "Seo";
 import { DEFAULT_TITLE } from "./constants";
 
 function Batches() {
-  const levelData = getLevelData();
+  const levelData = useLevelData();
   return (
     <div className="Batches">
       {releaseDays.map((releaseDay, i) => {
@@ -42,7 +42,7 @@ function Batches() {
       })}
       <Seo
         description={`Week overview of ${DEFAULT_TITLE}. ${levelData.releasedBatches.length} weeks released so far!`}
-        title={`${DEFAULT_TITLE} Week overview`}
+        title={`${DEFAULT_TITLE} | Week overview`}
       />
     </div>
   );

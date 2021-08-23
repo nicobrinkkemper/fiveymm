@@ -12,13 +12,13 @@
     justify-content: center;
     align-items: center;
     color:#F6F7F8;
-    background-color: #0C2338;
+    background-color: #FACD00;
     color:#F6F7F8;
     margin:0 .875rem 0 0;
     font-family: 'SuperMario', sans-serif;
 }
-.Batches .Batch .batchNumber.isNew {
-    background-color: #FACD00;
+.Batches .Batch.isNew .batchNumber {
+    background-color: #AF044A;
 }
 .Batches .Batch .releaseInfo{
     display: flex;
@@ -38,9 +38,6 @@
 .Batches .Batch.isUnreleased .batchNumber{
     background-color: #194670;
     color:inherit
-}
-.Batches .Batch.isNew .batchNumber{
-    background-color: #FACD00;
 }
 .Batches .Batch .new, .Batch.isUnreleased .unreleased{
     line-height: .8125rem;

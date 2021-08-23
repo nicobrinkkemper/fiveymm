@@ -16,7 +16,7 @@ a{
   color:white
 }
 a:active{
-  color:white
+  color:rgba(46, 47, 48, .75)
 }
 #root,
 .App {

@@ -19,10 +19,11 @@ export const releaseDays = [
   new Date(Date.parse("12 Sep 2021 15:00:00 GMT")),
   new Date(Date.parse("19 Sep 2021 15:00:00 GMT")),
   new Date(Date.parse("26 Sep 2021 15:00:00 GMT")),
-  new Date(Date.parse("4 Oct 2021 15:00:00 GMT")),
+  new Date(Date.parse("4 Oct 2021 15:00:00 GMT"))
 ];
 
 // add any field here from the csv headers to make it a valid level value
+export type levelRows = string[][];
 export type level = {
   order: number;
   batchNumber: number;
@@ -88,7 +89,35 @@ const createLevel = (levelRow: string[], index?: number, arr?: string[][]) => ({
 });
 export const isReleased = (releaseDay: Date) =>
   releaseDay.getTime() <= Date.now(); //
-export const getLevelData = memoizeOne(() => {
+
+// utility function for components to use
+const createBatchFinder = (levelRows: string[][]) => (batchNumber: number) => {
+  if (typeof batchNumber !== "number")
+    throw new TypeError(
+      `batchNumber should be typeof number, got ${typeof batchNumber}`
+    );
+  return levelRows.filter(
+    level => Number(level[csvHeaders["batchNumber"]]) === batchNumber
+  );
+};
+const createLevelFinder = (levelRows: string[][]) => (order: number) => {
+  if (typeof order !== "number")
+    throw new TypeError(`order should be typeof number, got ${typeof order}`);
+  return createLevel(
+    levelRows.find(level => Number(level[csvHeaders["order"]]) === order) || []
+  );
+};
+const createBatchLevelFinder =
+  (createBatch: ReturnType<typeof createBatchFinder>) =>
+  (batchNumber: number) => {
+    if (typeof batchNumber !== "number")
+      throw new TypeError(
+        `batchNumber should be typeof number, got ${typeof batchNumber}`
+      );
+    return createBatch(batchNumber).map(createLevel);
+  };
+
+export const useLevelData = memoizeOne(() => {
   const [header, ...levelRows] = data as [
     keyof typeof csvHeaders,
     ...string[][]
@@ -106,27 +135,9 @@ export const getLevelData = memoizeOne(() => {
       return Date.now() - a.getTime() - (Date.now() - b.getTime());
     })[0]
   );
-  // utility function for components to use
-  const batch = (batchNumber: number) => {
-    if (typeof batchNumber !== "number")
-      throw new TypeError("batchNumber should be number");
-    return levelRows.filter(
-      level => Number(level[csvHeaders["batchNumber"]]) === batchNumber
-    );
-  };
-  const level = (order: number) => {
-    if (typeof order !== "number")
-      throw new TypeError("order should be number");
-    return createLevel(
-      levelRows.find(level => Number(level[csvHeaders["order"]]) === order) ||
-        []
-    );
-  };
-  const levels = (batchNumber: number) => {
-    if (typeof batchNumber !== "number")
-      throw new TypeError("batchNumber should be number");
-    return batch(batchNumber).map(createLevel);
-  };
+  const batch = createBatchFinder(levelRows);
+  const level = createLevelFinder(levelRows);
+  const levels = createBatchLevelFinder(batch);
   return {
     level,
     levels,
