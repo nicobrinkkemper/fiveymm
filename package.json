@@ -25,6 +25,7 @@
     "cross-env": "^7.0.3",
     "dotenv-webpack": "^7.0.3",
     "fp-ts": "^2.11.1",
+    "htmdx": "^0.3.5",
     "jimp": "^0.16.1",
     "lodash": "^4.17.21",
     "mdx.macro": "^0.2.9",

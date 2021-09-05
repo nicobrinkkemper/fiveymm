@@ -22,7 +22,6 @@ import { weekTrailers } from "weekTrailers";
 import { Seo } from "Seo";
 import { DEFAULT_TITLE, DEFAULT_DESCRIPTION } from "./constants";
 import NotFound from "NotFound";
-import { production, snap } from "environment";
 
 const Welcome = importMDX.sync("./data/Welcome.mdx");
 

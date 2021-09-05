@@ -13,10 +13,10 @@ html,
 }
 
 a{
-  color:white
+  color:#facd00
 }
 a:active{
-  color:rgba(46, 47, 48, .75)
+  color:#ffea8e
 }
 #root,
 .App {
@@ -161,7 +161,7 @@ p {
     min-width: 34.25rem;
   }
   .Button {
-    max-width: 12.6875rem;
+    max-width: 13.6875rem;
   }
 }
 
@@ -170,7 +170,7 @@ p {
     min-width: 34.25rem;
   }
   .Button {
-    max-width: 12.6875rem;
+    max-width: 13.6875rem;
   }
 }
 

@@ -9,6 +9,7 @@ import { levelPath } from "levelPath";
 import { makerPath } from "makerPath";
 import Seo from "Seo";
 import { DEFAULT_TITLE } from "./constants";
+import { parseMarkdown } from "runtimeMarkdown";
 
 const Level = () => {
   const { batchNumber: strBatchNumber, order: strOrder } =
@@ -76,7 +77,7 @@ const Level = () => {
                 </span>
               </div>
             </div>
-            <p className="description">{level.description}</p>
+            <p className="description">{parseMarkdown(level.description)}</p>
           </div>
         </div>
       </Card>
@@ -98,7 +99,7 @@ const Level = () => {
               <span className="makerId">{level.makerId}</span>
             </div>
             <p className="makerDescription" style={{ whiteSpace: "pre-line" }}>
-              {level.makerDescription}
+              {parseMarkdown(level.makerDescription)}
             </p>
           </div>
         </div>

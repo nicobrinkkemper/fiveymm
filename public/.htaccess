@@ -15,5 +15,6 @@
     RewriteBase /
     RewriteCond %{REQUEST_FILENAME} !-l
     RewriteCond %{REQUEST_FILENAME}\.html -f
-    RewriteRule ^(.*)$ $1.html
+    RewriteRule ^(.*)$ $1/index.html
+    ErrorDocument 404 https://5ymm.warp.world/
 </ifModule>
