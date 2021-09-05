@@ -1,8 +1,8 @@
 import React from "react";
 import "./NotFound.css";
-import Button from "Button";
-import Card from "Card";
-import Seo from "Seo";
+import Button from "./Button";
+import Card from "./Card";
+import Seo from "./Seo";
 import { DEFAULT_TITLE } from "./constants";
 
 const NotFound = () => {

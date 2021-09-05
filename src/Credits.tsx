@@ -2,7 +2,7 @@ import React from "react";
 
 import "./Credits.css";
 import { importMDX } from "mdx.macro";
-import Seo from "Seo";
+import Seo from "./Seo";
 import { DEFAULT_TITLE, DEFAULT_DESCRIPTION } from "./constants";
 
 const CreditsContent = importMDX.sync("./data/Credits.mdx");

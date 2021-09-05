@@ -1,11 +1,11 @@
 
 import "./Batches.css";
 import React from "react";
-import Card from "Card";
-import { useLevelData, releaseDays } from "useLevelData";
-import Seo from "Seo";
+import Card from "./Card";
+import { useLevelData, releaseDays } from "./useLevelData";
+import Seo from "./Seo";
 import { DEFAULT_TITLE } from "./constants";
-import formatDate from "formatBatchName";
+import formatDate from "./formatBatchName";
 
 function Batches() {
   const levelData = useLevelData();

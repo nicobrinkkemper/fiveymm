@@ -5,8 +5,8 @@ import reportWebVitals from "./reportWebVitals";
 import { hydrate, render } from "react-dom";
 import * as FullStory from "@fullstory/browser";
 import TagManager from "react-gtm-module";
-import { production, snap } from "environment";
-import { AppWrapper } from "AppWrapper";
+import { production, snap } from "./environment";
+import { AppWrapper } from "./AppWrapper";
 
 const tagManagerArgs = {
   gtmId: "G-J20RKJ4B98"

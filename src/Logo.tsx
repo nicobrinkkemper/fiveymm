@@ -1,11 +1,11 @@
 import React, { PropsWithChildren } from "react";
+import { Link } from "react-router-dom";
 import logo1x from "./assets/logo_with_card1x.png";
 import logo2x from "./assets/logo_with_card2x.png";
 import logo3x from "./assets/logo_with_card3x.png";
 import simpleLogo1x from "./assets/logo_without_card1x.png";
 import simpleLogo2x from "./assets/logo_without_card2x.png";
 import simpleLogo3x from "./assets/logo_without_card3x.png";
-import { Link } from "react-router-dom";
 const logos = {
   logo_with_card: (
     <picture className="Picture">

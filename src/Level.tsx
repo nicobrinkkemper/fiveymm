@@ -1,15 +1,15 @@
 import "./Level.css";
 import React from "react";
-import Card from "Card";
-import { useLevelData, releaseDays } from "useLevelData";
 import { useParams } from "react-router-dom";
-import { Stars } from "Stars";
-import { Button } from "Button";
-import { levelPath } from "levelPath";
-import { makerPath } from "makerPath";
-import Seo from "Seo";
+import Card from "./Card";
+import { useLevelData, releaseDays } from "./useLevelData";
+import { Stars } from "./Stars";
+import { Button } from "./Button";
+import { levelPath } from "./levelPath";
+import { makerPath } from "./makerPath";
+import Seo from "./Seo";
 import { DEFAULT_TITLE } from "./constants";
-import { parseMarkdown } from "runtimeMarkdown";
+import { parseMarkdown } from "./runtimeMarkdown";
 
 const Level = () => {
   const { batchNumber: strBatchNumber, order: strOrder } =

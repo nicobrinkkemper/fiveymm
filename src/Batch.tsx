@@ -1,14 +1,14 @@
-import "./Batch.css";
 import React from "react";
+import "./Batch.css";
 import Card from "Card";
 import { useLevelData, releaseDays } from "useLevelData";
 import { useParams } from "react-router-dom";
 import { lowerCase } from "lodash";
-import Stars from "Stars";
-import { levelPath } from "levelPath";
-import Seo from "Seo";
+import Stars from "./Stars";
+import { levelPath } from "./levelPath";
+import Seo from "./Seo";
 import { DEFAULT_TITLE } from "./constants";
-import { humanReadableArray } from "humanReadableArray";
+import { humanReadableArray } from "./humanReadableArray";
 const Batch = () => {
   const { batchNumber } = useParams<Record<"batchNumber", string>>();
   const releaseDay = releaseDays[Number(batchNumber) - 1];

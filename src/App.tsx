@@ -1,28 +1,22 @@
-import "./App.css";
 import React from "react";
+import "./App.css";
 import About from "About";
 import Teaser from "Teaser";
-import {
-  Link,
-  Route,
-  Switch,
-  useLocation,
-  useParams
-} from "react-router-dom";
+import { Link, Route, Switch, useLocation, useParams } from "react-router-dom";
 import { Logo } from "Logo";
 import { Button } from "Button";
 import { importMDX } from "mdx.macro";
-import { releaseDays, startDate } from "useLevelData";
+import { releaseDays, startDate } from "./useLevelData";
 import YouTube from "react-youtube";
-import { Credits } from "Credits";
-import { Level } from "Level";
-import Batches from "Batches";
-import Batch from "Batch";
-import { weekTrailers } from "weekTrailers";
-import { Seo } from "Seo";
+import { Credits } from "./Credits";
+import { Level } from "./Level";
+import Batches from "./Batches";
+import Batch from "./Batch";
+import { weekTrailers } from "./weekTrailers";
+import { Seo } from "./Seo";
 import { DEFAULT_TITLE, DEFAULT_DESCRIPTION } from "./constants";
-import NotFound from "NotFound";
-import formatDate from "formatBatchName";
+import NotFound from "./NotFound";
+import formatDate from "./formatBatchName";
 
 const Welcome = importMDX.sync("./data/Welcome.mdx");
 
@@ -49,8 +43,7 @@ const BackButton = () => {
         to={`/levels/${batchNumber}`}
         inverted={true}
       >
-        Back to{" "}
-        {formatDate(releaseDays[Number(batchNumber) - 1])}
+        Back to {formatDate(releaseDays[Number(batchNumber) - 1])}
       </Button>
     );
   else if (typeof batchNumber === "string")
@@ -81,18 +74,18 @@ const WeekTrailer = () => {
   const weekTrailer = weekTrailers[Number(batchNumber) - 1];
   return (
     <div className="youtubeFlexDisable">
-        <YouTube
-          containerClassName="youtubeContainer"
-          videoId={weekTrailer || "iY6Qj6L_oF0"}
-          opts={{
-            playerVars: {
-              modestbranding: 1,
-              rel: 0,
-              loop: 1,
-              listType: "playlist"
-            }
-          }}
-        />
+      <YouTube
+        containerClassName="youtubeContainer"
+        videoId={weekTrailer || "iY6Qj6L_oF0"}
+        opts={{
+          playerVars: {
+            modestbranding: 1,
+            rel: 0,
+            loop: 1,
+            listType: "playlist",
+          },
+        }}
+      />
     </div>
   );
 };
@@ -211,32 +204,32 @@ const App = () => {
       </Switch>
     );
   return (
-      <div
-        className="App"
-        style={showAbout ? { overflowY: "hidden", maxHeight: "100vh" } : {}}
-      >
-        <div className="ie-fixMinHeight">
-          {routes}
-          <About />
-          <footer className="App-footer">
-            <a
-              href="https://discord.gg/yqdgu2Z"
-              rel="noopener noreferrer"
-              target="_BLANK"
-            >
-              Discord
-            </a>
-            <a
-              href="https://www.youtube.com/channel/UClayAs7TxVjMbzBLxBbqyoQ"
-              rel="noopener noreferrer"
-              target="_BLANK"
-            >
-              Youtube
-            </a>
-            <Link to="/credits">Credits</Link>
-          </footer>
-        </div>
+    <div
+      className="App"
+      style={showAbout ? { overflowY: "hidden", maxHeight: "100vh" } : {}}
+    >
+      <div className="ie-fixMinHeight">
+        {routes}
+        <About />
+        <footer className="App-footer">
+          <a
+            href="https://discord.gg/yqdgu2Z"
+            rel="noopener noreferrer"
+            target="_BLANK"
+          >
+            Discord
+          </a>
+          <a
+            href="https://www.youtube.com/channel/UClayAs7TxVjMbzBLxBbqyoQ"
+            rel="noopener noreferrer"
+            target="_BLANK"
+          >
+            Youtube
+          </a>
+          <Link to="/credits">Credits</Link>
+        </footer>
       </div>
+    </div>
   );
 };
 

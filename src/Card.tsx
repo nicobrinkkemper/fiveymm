@@ -1,8 +1,8 @@
 import React, { PropsWithChildren } from 'react'
+import { Link, LinkProps } from 'react-router-dom'
 import marioCake1x from './assets/illustration_mario1x.png'
 import marioCake2x from './assets/illustration_mario2x.png'
 import marioCake3x from './assets/illustration_mario3x.png'
-import { Link, LinkProps } from 'react-router-dom'
 
 const illustrations = {
     "mario_cake": (<picture className="Illustration-picture">
