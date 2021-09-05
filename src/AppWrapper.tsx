@@ -3,7 +3,7 @@ import { ErrorFallback } from "ErrorFallback";
 import { ErrorBoundary } from "react-error-boundary";
 import { BrowserRouter, BrowserRouterProps } from "react-router-dom";
 
-const AppWrapper = ({ routerProps }: { routerProps?: BrowserRouterProps }) => (
+const AppWrapper = ({ routerProps = {} }: { routerProps?: BrowserRouterProps }) => (
   <ErrorBoundary
     FallbackComponent={ErrorFallback}
     onReset={() => {
@@ -11,7 +11,7 @@ const AppWrapper = ({ routerProps }: { routerProps?: BrowserRouterProps }) => (
     }}
   >
     <div className="App-wrapper">
-      <BrowserRouter {...(routerProps || {})}>
+      <BrowserRouter {...routerProps}>
         <App />
       </BrowserRouter>
     </div>

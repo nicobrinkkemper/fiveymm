@@ -77,7 +77,7 @@ const Level = () => {
                 </span>
               </div>
             </div>
-            <p className="description">{parseMarkdown(level.description)}</p>
+            <div className="description">{parseMarkdown(level.description)}</div>
           </div>
         </div>
       </Card>
@@ -98,9 +98,9 @@ const Level = () => {
               <span className="name">{level.makerName}</span>
               <span className="makerId">{level.makerId}</span>
             </div>
-            <p className="makerDescription" style={{ whiteSpace: "pre-line" }}>
+            <div className="makerDescription" style={{ whiteSpace: "pre-line" }}>
               {parseMarkdown(level.makerDescription)}
-            </p>
+            </div>
           </div>
         </div>
       </Card>

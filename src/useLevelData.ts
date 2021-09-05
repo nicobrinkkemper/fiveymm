@@ -1,5 +1,5 @@
 import memoizeOne from "memoize-one";
-import data from "./data/5YMM Master Spreadsheet - Sheet1.csv";
+import data from "./data/5YMM Master Spreadsheet - Sheet1.json";
 /**
  * BATCH 1 = "15 Aug 2021 15:00:00 GMT"
  * BATCH 2 = "22 Aug 2021 15:00:00 GMT"
@@ -126,7 +126,10 @@ export const useLevelData = memoizeOne(() => {
   let i = 0;
   for (const head of header) {
     const v = csvHeaders[head as keyof typeof csvHeaders];
-    if (!(typeof v === "number" && i === v)) throw new Error(`CSV HAS CHANGED`);
+    if (!(typeof v === "number" && i === v)) {
+      console.log(data);
+      throw new Error(`CSV HAS CHANGED: stopped at ${v}`);
+    }
     i++;
   }
   const releasedBatches = releaseDays.filter(isReleased);

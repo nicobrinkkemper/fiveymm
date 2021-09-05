@@ -22,6 +22,7 @@ import { weekTrailers } from "weekTrailers";
 import { Seo } from "Seo";
 import { DEFAULT_TITLE, DEFAULT_DESCRIPTION } from "./constants";
 import NotFound from "NotFound";
+import formatDate from "formatBatchName";
 
 const Welcome = importMDX.sync("./data/Welcome.mdx");
 
@@ -49,10 +50,7 @@ const BackButton = () => {
         inverted={true}
       >
         Back to{" "}
-        {new Intl.DateTimeFormat("en-US", {
-          month: "long",
-          day: "numeric"
-        }).format(releaseDays[Number(batchNumber) - 1])}
+        {formatDate(releaseDays[Number(batchNumber) - 1])}
       </Button>
     );
   else if (typeof batchNumber === "string")

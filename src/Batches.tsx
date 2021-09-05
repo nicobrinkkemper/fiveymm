@@ -5,6 +5,7 @@ import Card from "Card";
 import { useLevelData, releaseDays } from "useLevelData";
 import Seo from "Seo";
 import { DEFAULT_TITLE } from "./constants";
+import formatDate from "formatBatchName";
 
 function Batches() {
   const levelData = useLevelData();
@@ -23,10 +24,7 @@ function Batches() {
               <span className="batchNumber">{i + 1}</span>
               <div className="releaseInfo">
                 <span className="releaseDay">
-                  {new Intl.DateTimeFormat("en-US", {
-                    month: "long",
-                    day: "numeric"
-                  }).format(releaseDay)}
+                  {formatDate(releaseDay)}
                 </span>
                 <span className="batchLevelAmount">
                   {isUnreleased ? 8 : levelData.batch(i + 1).length} levels
