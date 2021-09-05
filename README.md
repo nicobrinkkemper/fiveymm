@@ -16,9 +16,27 @@ For 4YMM, see https://github.com/nicobrinkkemper/4ymm
 - `npm run start` - run development mode
 - OR `npm run build` - build final product in `build folder`
 
+## Deploying strategy
+
+We reupload the site to FTP after any change. To build the site, run: `npm run build`. The contents of the build folder need to be uploaded. For a single release of levels, only the static folder and all the .html files and level folders need to be reuploaded, as well as any new level images.
+
+ After this step navigatable pages will be prerendered and saved to html inside the `/build` folder. Levels that are not released yet will not be prerendered. Because of this, it is important to build the site both before and right after release. While it isn't a strict neccesisty for the website to have prerendered pages, it is a nice benefit for SEO and non-javascript users and makes reloading/sharing pages faster to render initially.
+
+This site is designed to run without any server-side scripting. It can be deployed to any server that hosts simple static files. The site works best when the server passes through pages that exist, but redirect to homepage when they do not. This can be achieved through .htaccess or other means depending on the server:
+```
+<ifModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule (.*) index.html [QSA,L]
+</ifModule>
+```
+
+
 ## Update level codes
+We update the CSV with level codes and descriptions every Sunday before 15:00 GMT. To see the dates for each batch, see file `src/useLevelData.ts`. 
 - download csv from this page https://docs.google.com/spreadsheets/d/1Yg9K2sKsn9UpJrJlQeDBILJXGAX0kHorfb5rnFY4Zd0/edit#gid=0
-- replace csv in `src/data`
+- replace csv in `src/data` (simply copy paste the whole document so you don't have to mess with filenames)
 
 ## Add images
 - Download images https://drive.google.com/drive/folders/1xf17Tck355BIhOD7f8vEPKgWrKk_f-fd
@@ -33,6 +51,7 @@ For 4YMM, see https://github.com/nicobrinkkemper/4ymm
 ## Upload with FTP
 - `npm run build`
 - upload build folder to ftp with your preferred FTP program
+- Be careful! Hashes might change for bundled css and js. Make sure they are the same, or simply upload the whole static folder along with all html files.
 
 ## General information about the source code
 

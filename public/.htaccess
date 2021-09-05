@@ -11,10 +11,7 @@
 ###GEITJE'S REDIRECT
 <ifModule mod_rewrite.c>
     RewriteEngine On
-    DirectorySlash Off
-    RewriteBase /
-    RewriteCond %{REQUEST_FILENAME} !-l
-    RewriteCond %{REQUEST_FILENAME}\.html -f
-    RewriteRule ^(.*)$ $1/index.html
-    ErrorDocument 404 https://5ymm.warp.world/
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule (.*) index.html [QSA,L]
 </ifModule>
