@@ -21,7 +21,7 @@ For 4YMM, see https://github.com/nicobrinkkemper/4ymm
 - replace csv in `src/data`
 
 ## Add images
-- Download images https://drive.google.com/drive/folders/1a8aEUBZau-hekxB82sJR-gmWoNPFBVkg
+- Download images https://drive.google.com/drive/folders/1xf17Tck355BIhOD7f8vEPKgWrKk_f-fd
 - Add new images to `scripts/levels` and `scripts/makers`
 - `npm run build:images` this command generates all the images and puts it in `scripts/levelImages` and `scripts/makerImages`
 - `npm run move:images` this command moves over folders `makerImages` and `levelImages` to `public folder` and removes the js files in those folders
@@ -85,6 +85,9 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+### `npm run images`
+
+Combines both build and move images step as a simple command that will fix all the maker and level images. 
 
 ### `npm run build:images`
 
