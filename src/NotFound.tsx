@@ -21,7 +21,7 @@ const NotFound = () => {
           </Button>
         </p>
       </Card>
-      <Seo title={`404 Jank not Fount | ${DEFAULT_TITLE}`} />
+      <Seo title={`404 | Jank Not Found | ${DEFAULT_TITLE}`} />
     </div>
   );
 };
