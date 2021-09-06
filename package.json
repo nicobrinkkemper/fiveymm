@@ -5,12 +5,14 @@
   "homepage": "https://5ymm.warp.world/",
   "dependencies": {},
   "scripts": {
-    "start": "craco start",
+    "start": "npm-run-all csvtojson craco:start",
     "serve": "serve build",
-    "build": "craco build",
+    "build": "npm-run-all csvtojson craco:build",
     "postbuild": "react-snap",
-    "test": "npm-run-all csvtojson test:start",
-    "test:start": "craco test",
+    "test": "npm-run-all csvtojson craco:test",
+    "craco:test": "craco test",
+    "craco:build": "craco build",
+    "craco:start": "craco start",
     "csvtojson": "node ./scripts/csvToJson.js",
     "assets": "npm-run-all logo_with_card logo_without_card mario_illustration",
     "logo_with_card": "convert -resize 272 ./src/assets/original_logo_with_card.png ./src/assets/logo_with_card1x.png; convert -resize 548 ./src/assets/original_logo_with_card.png ./src/assets/logo_with_card2x.png; convert -resize 1096 ./src/assets/original_logo_without_card.png ./src/assets/logo_with_card3x.png",
@@ -37,6 +39,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "reactSnap": {
+    "puppeteerArgs": ["--no-sandbox"],
+    "concurrency": 1,
+    "inlineCss": false
   },
   "devDependencies": {
     "@craco/craco": "^6.1.2",
