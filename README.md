@@ -32,6 +32,23 @@ This site is designed to run without any server-side scripting. It can be deploy
 </ifModule>
 ```
 
+## Building with docker
+
+If you don't wish to deal with installing node, you can use Docker instead. The dockerfile isn't used for deploying, yet.
+Install docker (ie. docker for desktop) and run command:
+```
+docker compose up -d
+```
+You can now visit [localhost:8080](http://localhost:8080)
+The first time can take a while, after that it should start quickly. To rebuild the website, run 
+```
+docker compose up -d --build
+```
+To extract the build contents to work with them locally, for example to upload somewhere else, run:
+```
+docker cp fiveymm:/usr/local/apache2/htdocs ./docker-build
+```
+This will copy the site to `./docker-build` folder
 
 ## Update level codes
 We update the CSV with level codes and descriptions every Sunday before 15:00 GMT. To see the dates for each batch, see file `src/useLevelData.ts`. 

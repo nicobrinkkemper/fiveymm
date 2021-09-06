@@ -1,6 +1,7 @@
 version: "3.9" 
 services:
   web:
+    container_name: fiveymm
     build: .
     ports:
       - "8080:80"

@@ -15,10 +15,9 @@ RUN mkdir -p /home/temp
 WORKDIR /home/temp
 COPY ./package-lock.json ./package.json ./
 
-RUN npm install
+RUN npm ci
 COPY ./ .
 RUN npm run build
-
 
 # Stage 2 - the production environment
 FROM httpd:2.4
