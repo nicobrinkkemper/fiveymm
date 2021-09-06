@@ -40,7 +40,7 @@ Install docker (ie. docker for desktop) and run command:
 docker compose up -d
 ```
 You can now visit [localhost:8080](http://localhost:8080)
-The first time can take a while, after that it should start quickly. To rebuild the website, run 
+The first time can take a while, after that it should start quickly. To rebuild the website from scratch, run 
 ```
 docker compose up -d --build
 ```
