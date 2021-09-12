@@ -2,7 +2,7 @@
   "name": "fiveymm",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://5ymm.warp.world/",
+  "homepage": "https://6ymm.warp.world/",
   "dependencies": {},
   "scripts": {
     "start": "npm-run-all csvtojson craco:start",
