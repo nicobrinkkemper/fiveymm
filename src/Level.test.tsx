@@ -4,6 +4,13 @@ import AppWrapper from './AppWrapper';
 import { useLevelData, startDate } from 'useLevelData';
 import formatDate from 'formatBatchName';
 
+
+jest.mock('react', () => {
+    const React = jest.requireActual('react');
+    React.Suspense = ({ children }:React.PropsWithChildren<{}>) => null;
+    return React;
+});
+
 test('can show level codes', () => {
   const levelData = useLevelData()
   render(<AppWrapper />);
