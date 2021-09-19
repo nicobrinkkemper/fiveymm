@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+/public/makerImages/*.webp
+/public/levelImages/*.webp
 /.pnp
 .pnp.js
 

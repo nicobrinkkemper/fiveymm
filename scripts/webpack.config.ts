@@ -29,9 +29,13 @@ const configLevels: webpack.Configuration = {
             loader: "url-loader",
             options: {
               limit: 8192,
-              name: "[name]-[width].[ext]",
-              sizes: [1920, 1280, 960, 480],
-              fallback: require.resolve("responsive-loader")
+              name: "[name]-[width].webp",
+              sizes: [500, 250],
+              fallback: require.resolve("responsive-loader"),
+              fallbackOptions: {
+                  adapter: require("responsive-loader/sharp"),
+                  format:'webp'
+              }
             }
           }
         ]
@@ -63,9 +67,13 @@ const configMakers: webpack.Configuration = {
             loader: "url-loader",
             options: {
               limit: 8192,
-              name: "[name]-[width].[ext]",
+              name: "[name]-[width].webp",
               sizes: [500, 250],
-              fallback: require.resolve("responsive-loader")
+              fallback: require.resolve("responsive-loader"),
+              fallbackOptions: {
+                  adapter: require("responsive-loader/sharp"),
+                  format:'webp'
+              }
             }
           }
         ]

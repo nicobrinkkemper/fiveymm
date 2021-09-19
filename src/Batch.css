@@ -20,7 +20,7 @@
   flex-flow: column;
   width: 100%;
 }
-.Batch .levelPictureSmall img {
+.Batch .levelImg {
   height: 6.125rem;
   width: 6.125rem;
   object-fit: cover;

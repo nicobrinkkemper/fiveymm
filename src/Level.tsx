@@ -1,15 +1,16 @@
 import "./Level.css";
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Card from "./Card";
 import { useLevelData, releaseDays } from "./useLevelData";
 import { Stars } from "./Stars";
 import { Button } from "./Button";
 import { levelPath } from "./levelPath";
-import { makerPath } from "./makerPath";
 import Seo from "./Seo";
 import { DEFAULT_TITLE } from "./constants";
 import { parseMarkdown } from "./runtimeMarkdown";
+import { LevelImage } from "LevelImage";
+import { MakerImage } from "MakerImage";
 
 const Level = () => {
   const { batchNumber: strBatchNumber, order: strOrder } =
@@ -18,26 +19,27 @@ const Level = () => {
   const levelData = useLevelData();
   const batchLevels = levelData.levels(Number(strBatchNumber));
   const level = batchLevels.find(({ order: _order }) => _order === order);
-  if (typeof level !== "object") return <span>There is nothing here.</span>;
+  
+  if (typeof level !== "object") return <span>There is nothing here. Please come back later.</span>;
   const startOrder = batchLevels[0].order;
   const endOrder = batchLevels[batchLevels.length - 1].order;
   const batchNumber = Number(level.batchNumber);
   if (Number(strBatchNumber) !== level.batchNumber)
-    return <span>A problem occured. Please come back later.</span>;
+    return <span>A problem occurred. Please come back later.</span>;
   const releaseDay = releaseDays[batchNumber - 1];
-  const classList = ["Level"];
+  const classes = ["Level"];
   const isNew = levelData.newestBatch === batchNumber - 1;
   const isUnreleased = levelData.releasedBatches.indexOf(releaseDay) === -1;
 
   const tags = level.tags.split(",");
   const hasPreviousLevel = Number(order) > startOrder;
   const hasNextLevel = endOrder > Number(order);
-  const navigationClasslist = ["navigation"];
-  if (hasPreviousLevel) navigationClasslist.push("hasPreviousLevel");
-  if (hasNextLevel) navigationClasslist.push("hasNextLevel");
-  if (isNew) classList.push("isNew");
+  const navigationClasses = ["navigation"];
+  if (hasPreviousLevel) navigationClasses.push("hasPreviousLevel");
+  if (hasNextLevel) navigationClasses.push("hasNextLevel");
+  if (isNew) classes.push("isNew");
   if (isUnreleased) return <span>This level hasn't been released yet.</span>;
-
+  
   return (
     <div className="Level">
       <Card>
@@ -46,18 +48,7 @@ const Level = () => {
             <div className="makerInfo">
               <span className={"levelName"}>{level.levelName}</span>
             </div>
-            <picture className="levelPicture">
-              <source
-                srcSet={`
-                  /${levelPath(level.levelName, 960)} 2x,
-                  /${levelPath(level.levelName, 1280)} 3x,
-                  /${levelPath(level.levelName, 1920)} 4x`}
-              />
-              <img
-                src={`/${levelPath(level.levelName)}`}
-                alt={`Screenshot: ${level.levelName}`}
-              />
-            </picture>
+            <LevelImage levelName={level.levelName} />
             <div className="levelCode">
               {level.levelCode || "Code coming soon"}
             </div>
@@ -84,13 +75,7 @@ const Level = () => {
       <Card>
         <div className="makerCard">
           <div className="info">
-            <picture className="miiPicture">
-              <source srcSet={`/${makerPath(level.makerName, 500)} 2x`} />
-              <img
-                src={makerPath(level.makerName)}
-                alt={`${level.makerName} Mii`}
-              />
-            </picture>
+            <MakerImage makerName={level.makerName} />
             <div className={"makerName"}>
               <span
                 className={`nationality flag-icon flag-icon-${level.nationality.toLowerCase()}`}
@@ -104,7 +89,7 @@ const Level = () => {
           </div>
         </div>
       </Card>
-      <div className={navigationClasslist.join(" ")}>
+      <div className={navigationClasses.join(" ")}>
         {hasPreviousLevel ? (
           <Button
             icon="arrow-left"
@@ -124,7 +109,7 @@ const Level = () => {
       <Seo
         description={`${DEFAULT_TITLE} level by ${level.makerName}: ${level.levelName} - ${level.levelCode}`}
         title={`${level.levelName} | ${level.levelCode} | ${DEFAULT_TITLE}`}
-        image={`${levelPath(level.levelName)}`} // do not prepend '/'
+        image={`${levelPath(level.levelName)}`}
         twitter="summary_large_image"
       />
     </div>

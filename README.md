@@ -57,7 +57,7 @@ We update the CSV with level codes and descriptions every Sunday before 15:00 GM
 - replace csv in `src/data` (simply copy paste the whole document so you don't have to mess with filenames)
 
 ## Add images
-- Download maker images https://drive.google.com/drive/u/1/folders/15xUPrza1H7Y9KifPfCpBapP0SyXnydog
+- Download maker images https://drive.google.com/drive/folders/15xUPrza1H7Y9KifPfCpBapP0SyXnydog
 - Download level images https://drive.google.com/drive/folders/1xf17Tck355BIhOD7f8vEPKgWrKk_f-fd
 - Add new images to `scripts/levels` and `scripts/makers`
 - `npm run build:images` this command generates all the images and puts it in `scripts/levelImages` and `scripts/makerImages`

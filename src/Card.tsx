@@ -35,14 +35,14 @@ const WrapLink = ({children,to,disabled}: CardProps)=>{
 }
 
 const Card = ({ children, illustration, disabled = false, to }: CardProps) => {
-    const classList = ['Card', illustration]
-    if (hasIllustration(illustration)) classList.push('hasIllustration')
-    if (disabled) classList.push('disabled')
+    const classes = ['Card', illustration]
+    if (hasIllustration(illustration)) classes.push('hasIllustration')
+    if (disabled) classes.push('disabled')
     const isClickable = typeof to === 'string' 
-    if (isClickable) classList.push('isClickable')
+    if (isClickable) classes.push('isClickable')
     const Illustration = (hasIllustration(illustration)) ? createIllustration(illustration) : ()=>null
     return (
-        <div className={classList.join(' ')}>
+        <div className={classes.join(' ')}>
             <WrapLink to={to} disabled={disabled}>
                 <Illustration />
                 {children}

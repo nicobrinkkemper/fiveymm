@@ -18,9 +18,9 @@ const stars = [
 type StarsProps = {value?: keyof typeof stars}
 
 const Star = (i: number, value: keyof typeof stars = 0) => {
-    const classList = ['star'];
-    classList.push(String(starName[value]))
-    return <span key={i.toString()} className={classList.join(" ")}>{stars[value]}</span>
+    const classes = ['star'];
+    classes.push(String(starName[value]))
+    return <span key={i.toString()} className={classes.join(" ")}>{stars[value]}</span>
 }
 
 const Stars = ({value = 0}: StarsProps) => {

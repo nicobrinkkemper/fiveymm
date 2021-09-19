@@ -1,21 +1,19 @@
 import App from "App";
-import { ErrorFallback } from "ErrorFallback";
-import { ErrorBoundary } from "react-error-boundary";
 import { BrowserRouter, BrowserRouterProps } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 
-const AppWrapper = ({ routerProps = {} }: { routerProps?: BrowserRouterProps }) => (
-  <ErrorBoundary
-    FallbackComponent={ErrorFallback}
-    onReset={() => {
-      // reset the state of your app so the error doesn't happen again
-    }}
-  >
-    <div className="App-wrapper">
-      <BrowserRouter {...routerProps}>
+const AppWrapper = ({
+  routerProps = {},
+}: {
+  routerProps?: BrowserRouterProps;
+}) => (
+  <HelmetProvider>
+    <BrowserRouter {...routerProps}>
+      <div className="App-wrapper">
         <App />
-      </BrowserRouter>
-    </div>
-  </ErrorBoundary>
+      </div>
+    </BrowserRouter>
+  </HelmetProvider>
 );
 
 export { AppWrapper };

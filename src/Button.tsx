@@ -98,15 +98,15 @@ const Button = ({
   id,
 }: ButtonProps) => {
   const Icon = createIcon(icon);
-  const classList = ["Button", icon];
-  if (primary) classList.push("primary");
-  if (inverted) classList.push("inverted");
-  if (typeof icons[icon] === "string") classList.push("hasIcon");
-  if (iconPosition === "left") classList.push("iconIsLeft");
+  const classes = ["Button", icon];
+  if (primary) classes.push("primary");
+  if (inverted) classes.push("inverted");
+  if (typeof icons[icon] === "string") classes.push("hasIcon");
+  if (iconPosition === "left") classes.push("iconIsLeft");
   const props = {
     ...(typeof id === "string" ? { id } : {}),
     to,
-    className: classList.join(" "),
+    className: classes.join(" "),
   };
   function LinkOrAnchor<S = unknown>(
     props: React.PropsWithoutRef<LinkProps<S>> &

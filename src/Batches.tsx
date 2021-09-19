@@ -12,15 +12,15 @@ function Batches() {
   return (
     <div className="Batches">
       {releaseDays.map((releaseDay, i) => {
-        const classList = ["Batch"];
+        const classes = ["Batch"];
         const isNew = levelData.newestBatch === i;
         const isUnreleased =
           levelData.releasedBatches.indexOf(releaseDay) === -1;
-        if (isNew) classList.push("isNew");
-        else if (isUnreleased) classList.push("isUnreleased");
+        if (isNew) classes.push("isNew");
+        else if (isUnreleased) classes.push("isUnreleased");
         return (
           <Card key={String(i)} disabled={isUnreleased} to={`/levels/${i + 1}`}>
-            <div className={classList.join(" ")}>
+            <div className={classes.join(" ")}>
               <span className="batchNumber">{i + 1}</span>
               <div className="releaseInfo">
                 <span className="releaseDay">

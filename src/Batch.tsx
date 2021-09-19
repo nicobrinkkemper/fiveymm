@@ -5,30 +5,30 @@ import { useLevelData, releaseDays } from "useLevelData";
 import { useParams } from "react-router-dom";
 import { lowerCase } from "lodash";
 import Stars from "./Stars";
-import { levelPath } from "./levelPath";
 import Seo from "./Seo";
 import { DEFAULT_TITLE } from "./constants";
 import { humanReadableArray } from "./humanReadableArray";
+import { LevelImage } from "LevelImage";
 const Batch = () => {
   const { batchNumber } = useParams<Record<"batchNumber", string>>();
   const releaseDay = releaseDays[Number(batchNumber) - 1];
-  const {newestBatch, releasedBatches, levels} = useLevelData();
-  const classList = ["Batch"];
+  const { newestBatch, releasedBatches, levels } = useLevelData();
+  const classes = ["Batch"];
   const isNew = newestBatch === Number(batchNumber) - 1;
   const batchLevels = levels(Number(batchNumber));
   const isUnreleased = releasedBatches.indexOf(releaseDay) === -1;
-  batchLevels.map(({levelName})=>levelName).join(', ')
-  if (isNew) classList.push("isNew");
+  batchLevels.map(({ levelName }) => levelName).join(", ");
+  if (isNew) classes.push("isNew");
   if (isUnreleased) return <span>...</span>;
-  const levelNames = batchLevels.map(({levelName})=>levelName);
+  const levelNames = batchLevels.map(({ levelName }) => levelName);
   return (
-    // keep this wrapper for react-snap weirdness
+    // keep this wrapper for react-snap
     <>
       <div className="Batch">
         <h1>
           {new Intl.DateTimeFormat("en-US", {
             month: "long",
-            day: "numeric"
+            day: "numeric",
           }).format(releaseDay)}
         </h1>
         {batchLevels.map((level, i) => {
@@ -36,18 +36,7 @@ const Batch = () => {
           return (
             <Card key={String(i)} to={`/level/${batchNumber}/${level.order}`}>
               <div className={"LevelCard"}>
-                <picture className="levelPictureSmall">
-                  <source
-                    srcSet={`
-                  /${levelPath(level.levelName, 960)},
-                  /${levelPath(level.levelName, 1280)} 2x,
-                  /${levelPath(level.levelName, 1920)} 3x`}
-                  />
-                  <img
-                    src={`/${levelPath(level.levelName)}`}
-                    alt={`Screenshot: ${level.levelName}`}
-                  />
-                </picture>
+                <LevelImage levelName={level.levelName} />
                 <div className="info">
                   <div className="makerInfo">
                     <span className={"levelName"}>{level.levelName}</span>
@@ -79,7 +68,9 @@ const Batch = () => {
                 </div>
               </div>
               <Seo
-                description={`Week ${batchNumber} of 6YMM has started! In this week's trailer we show off eight new levels: ${humanReadableArray(levelNames)}. Celebrating Five years of MarioMaker! Week ${batchNumber} released at ${releaseDay.toDateString()}.`}
+                description={`Week ${batchNumber} of 6YMM has started! In this week's trailer we show off eight new levels: ${humanReadableArray(
+                  levelNames
+                )}. Celebrating Five years of MarioMaker! Week ${batchNumber} released at ${releaseDay.toDateString()}.`}
                 title={`${DEFAULT_TITLE} | Week ${batchNumber}`}
               />
             </Card>

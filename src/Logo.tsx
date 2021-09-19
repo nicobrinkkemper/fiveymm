@@ -35,11 +35,11 @@ const createPicture = (logo: keyof typeof logos) => {
 };
 
 const Logo = ({ logo = "logo_with_card", small = false }: LogoProps) => {
-  const classList = ["Logo"];
+  const classes = ["Logo"];
   const Picture = createPicture(logo);
-  if (small) classList.push("small");
+  if (small) classes.push("small");
   return (
-    <div className={classList.join(" ")}>
+    <div className={classes.join(" ")}>
       <Link to="/">
         <Picture />
       </Link>

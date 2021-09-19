@@ -8,7 +8,7 @@ function ErrorFallback({
   resetErrorBoundary: (...args: Array<unknown>) => void;
 }) {
   return (
-    <NotFound />
+    <NotFound error={error.message} />
   );
 }
 

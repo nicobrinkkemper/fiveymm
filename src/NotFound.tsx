@@ -5,11 +5,12 @@ import Card from "./Card";
 import Seo from "./Seo";
 import { DEFAULT_TITLE } from "./constants";
 
-const NotFound = () => {
+const NotFound = ({error}:{error:string}) => {
   return (
     <div className="NotFound">
       <Card>
         <p>This page was not found, sorry! Jank can happen sometimes.</p>
+        <p>The error message for the web developer: {error}</p>
         <p>
           <Button primary={true} icon="arrow-right" to="/levels">
             To the levels

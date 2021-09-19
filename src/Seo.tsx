@@ -1,8 +1,7 @@
 import { startDate } from "useLevelData";
-import React from "react";
-import Helmet from "react-helmet";
+import * as React from "react";
+import { Helmet } from "react-helmet-async";
 import { BASE_URL, DEFAULT_DESCRIPTION, DEFAULT_TITLE } from "./constants";
-
 
 const absoluteUrl = (path: string) => `${BASE_URL}${path}`;
 
@@ -28,16 +27,16 @@ const getMetaTags = ({
   category,
   tags,
   twitter,
-  image
+  image,
 }: getMetaTagsProps) => {
   const metaTags = [
     { itemprop: "name", content: title },
     { itemprop: "description", content: description },
-    { name: "viewport", content: `width=device-width,initial-scale=1`},
+    { name: "viewport", content: `width=device-width,initial-scale=1` },
     { name: "description", content: description },
     { name: "twitter:title", content: `${title} | ${BASE_URL}` },
     { name: "twitter:description", content: description },
-    { name: "twitter:creator", content: '@bbmariomaker2' },
+    { name: "twitter:creator", content: "@bbmariomaker2" },
     { name: "og:title", content: `${title} | ${BASE_URL}` },
     { name: "og:type", content: contentType },
     { name: "og:url", content: url },
@@ -70,13 +69,13 @@ type getHtmlAttributesProps = {
 };
 const getHtmlAttributes = ({ schema }: getHtmlAttributesProps) => {
   let result = {
-    lang: "en"
+    lang: "en",
   };
   if (schema) {
     return {
       ...result,
       itemscope: undefined,
-      itemtype: `http://schema.org/${schema}`
+      itemtype: `http://schema.org/${schema}`,
     };
   }
   return result;
@@ -96,20 +95,41 @@ type SeoProps = {
   image?: string;
 };
 type getLinkTagsProps = {
-  path: string
-}
-const getLinkTags = ({path}:getLinkTagsProps)=>[
+  path: string;
+};
+const getLinkTags = ({ path }: getLinkTagsProps) => [
   { rel: "canonical", href: absoluteUrl(path) },
-  { rel: "icon", href: `${absoluteUrl(path)}favicon.ico`},
-  { rel: "icon", sizes:"16x16", href: `${absoluteUrl(path)}favicon-16x16.png`},
-  { rel: "icon", sizes:"32x32", href: `${absoluteUrl(path)}favicon-32x32.png`},
-  { rel: "icon", sizes:"96x96", href: `${absoluteUrl(path)}favicon-96x96.png`},
-  { rel: "msapplication-square70x70logo", content: `${absoluteUrl(path)}ms-icon-70x70.png` },
-  { rel: "msapplication-square150x150logo", content: `${absoluteUrl(path)}ms-icon-150x150.png` },
-  { rel: "msapplication-square310x310logo", content: `${absoluteUrl(path)}ms-icon-310x310.png` },
+  { rel: "icon", href: `${absoluteUrl(path)}/favicon.ico` },
+  {
+    rel: "icon",
+    sizes: "16x16",
+    href: `${absoluteUrl(path)}/favicon-16x16.png`,
+  },
+  {
+    rel: "icon",
+    sizes: "32x32",
+    href: `${absoluteUrl(path)}/favicon-32x32.png`,
+  },
+  {
+    rel: "icon",
+    sizes: "96x96",
+    href: `${absoluteUrl(path)}/favicon-96x96.png`,
+  },
+  {
+    rel: "msapplication-square70x70logo",
+    content: `${absoluteUrl(path)}/ms-icon-70x70.png`,
+  },
+  {
+    rel: "msapplication-square150x150logo",
+    content: `${absoluteUrl(path)}/ms-icon-150x150.png`,
+  },
+  {
+    rel: "msapplication-square310x310logo",
+    content: `${absoluteUrl(path)}/ms-icon-310x310.png`,
+  },
   { rel: "msapplication-TileColor", content: `#F6F7F8` },
   { rel: "theme-color", content: `#F6F7F8` },
-]
+];
 const Seo = ({
   schema,
   title = DEFAULT_TITLE,
@@ -118,17 +138,17 @@ const Seo = ({
   contentType = "image/png",
   published = startDate.toDateString(),
   updated = new Date(Date.now()).toDateString(),
-  category = 'gaming',
-  tags = [DEFAULT_TITLE,'MarioMaker2'],
+  category = "gaming",
+  tags = [DEFAULT_TITLE, "MarioMaker2"],
   twitter = "summary",
-  image = "android-chrome-512x512.png"
+  image = "/android-chrome-512x512.png",
 }: SeoProps) => (
   <Helmet
     htmlAttributes={getHtmlAttributes({
-      schema
+      schema,
     })}
     title={title}
-    link={getLinkTags({path})}
+    link={getLinkTags({ path })}
     meta={getMetaTags({
       title,
       description,
@@ -139,7 +159,7 @@ const Seo = ({
       category,
       tags,
       twitter,
-      image
+      image,
     })}
   />
 );

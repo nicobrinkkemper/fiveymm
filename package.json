@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "homepage": "https://6ymm.warp.world/",
-  "dependencies": {},
   "scripts": {
     "start": "npm-run-all csvtojson craco:start",
     "serve": "serve build",
@@ -18,9 +17,10 @@
     "logo_with_card": "convert -resize 272 ./src/assets/original_logo_with_card.png ./src/assets/logo_with_card1x.png; convert -resize 548 ./src/assets/original_logo_with_card.png ./src/assets/logo_with_card2x.png; convert -resize 1096 ./src/assets/original_logo_without_card.png ./src/assets/logo_with_card3x.png",
     "logo_without_card": "convert -resize 272 ./src/assets/original_logo_without_card.png ./src/assets/logo_without_card1x.png; convert -resize 548 ./src/assets/original_logo_without_card.png ./src/assets/logo_without_card2x.png; convert -resize 1096 ./src/assets/original_logo_without_card.png ./src/assets/logo_without_card3x.png",
     "mario_illustration": "convert -resize 140 ./src/assets/original_illustration_mario.png ./src/assets/illustration_mario1x.png; convert -resize 280 ./src/assets/original_illustration_mario.png ./src/assets/illustration_mario2x.png; convert -resize 560 ./src/assets/original_illustration_mario.png ./src/assets/illustration_mario3x.png",
-    "images": "npm-run-all build:images move:images",
+    "images": "npm-run-all remove:images build:images move:images",
+    "remove:images": "rm -rf ./public/makerImages; rm -rf ./public/levelImages;",
     "build:images": "cross-env TS_NODE_PROJECT=\"./scripts/tsconfig.json\" webpack --config ./scripts/webpack.config.ts",
-    "move:images": "rm ./scripts/makerImages/makerImages.bundle.js; rm ./scripts/levelImages/levelImages.bundle.js; cp -R scripts/levelImages public; cp -R scripts/makerImages public; rm -rf scripts/levelImages; rm -rf scripts/makerImages;"
+    "move:images": "rm -rf ./scripts/makerImages/makerImages.bundle.js; rm -rf ./scripts/levelImages/levelImages.bundle.js; cp -R scripts/levelImages public; cp -R scripts/makerImages public; rm -rf scripts/levelImages; rm -rf scripts/makerImages;"
   },
   "eslintConfig": {
     "extends": [
@@ -41,7 +41,9 @@
     ]
   },
   "reactSnap": {
-    "puppeteerArgs": ["--no-sandbox"],
+    "puppeteerArgs": [
+      "--no-sandbox"
+    ],
     "concurrency": 1,
     "inlineCss": false
   },
@@ -96,5 +98,8 @@
     "typescript": "^4.4.2",
     "web-vitals": "^1.1.2",
     "webpack-cli": "^4.8.0"
+  },
+  "dependencies": {
+    "react-helmet-async": "^1.1.2"
   }
 }

@@ -4,7 +4,7 @@ import "./Teaser.css";
 import YouTube from "react-youtube";
 import { startDate } from "useLevelData";
 import Button from "Button";
-import { production, snap } from "environment";
+import { isProduction, isSnap } from "environment";
 const trailerYtId = "5hKTIAXIqn4";
 const Completionist = () => {
   return (
@@ -54,7 +54,7 @@ const renderer = ({
 };
 
 const Teaser = () => {
-  const renderIframe = production && snap;
+  const renderIframe = !isProduction && !isSnap;
   return (
     <div className="Teaser">
       <div className="youtubeWrapper">

@@ -165,15 +165,6 @@ p {
   }
 }
 
-@media only screen and (min-width: 620px) {
-  .Card {
-    min-width: 34.25rem;
-  }
-  .Button {
-    max-width: 13.6875rem;
-  }
-}
-
 .Button {
   font-family: "SuperMarioMakerExtended";
   display: flex;

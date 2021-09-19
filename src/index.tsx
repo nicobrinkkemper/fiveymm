@@ -5,7 +5,7 @@ import reportWebVitals from "./reportWebVitals";
 import { hydrate, render } from "react-dom";
 import * as FullStory from "@fullstory/browser";
 import TagManager from "react-gtm-module";
-import { production, snap } from "./environment";
+import { isProduction, isSnap } from "./environment";
 import { AppWrapper } from "./AppWrapper";
 
 const tagManagerArgs = {
@@ -24,7 +24,7 @@ if (rootElement?.hasChildNodes()) {
   render(AppJSX, rootElement);
 }
 
-if (production && snap) {
+if (isProduction && !isSnap) {
   TagManager.initialize(tagManagerArgs);
   FullStory.init({ orgId: "W54CA", namespace: "FS" });
   reportWebVitals();

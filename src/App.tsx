@@ -17,6 +17,10 @@ import { Seo } from "./Seo";
 import { DEFAULT_TITLE, DEFAULT_DESCRIPTION } from "./constants";
 import NotFound from "./NotFound";
 import formatDate from "./formatBatchName";
+import { ErrorBoundary } from "react-error-boundary";
+import { ErrorFallback } from "ErrorFallback";
+import { isSnap } from "environment";
+import { WeekTrailer } from "WeekTrailer";
 
 const Welcome = importMDX.sync("./data/Welcome.mdx");
 
@@ -69,26 +73,7 @@ const BackButton = () => {
   );
 };
 
-const WeekTrailer = () => {
-  const { batchNumber } = useParams<{ batchNumber: string }>();
-  const weekTrailer = weekTrailers[Number(batchNumber) - 1];
-  return (
-    <div className="youtubeFlexDisable">
-      <YouTube
-        containerClassName="youtubeContainer"
-        videoId={weekTrailer || "iY6Qj6L_oF0"}
-        opts={{
-          playerVars: {
-            modestbranding: 1,
-            rel: 0,
-            loop: 1,
-            listType: "playlist",
-          },
-        }}
-      />
-    </div>
-  );
-};
+
 
 const App = () => {
   const location = useLocation();
@@ -198,7 +183,7 @@ const App = () => {
             </div>
           </header>
           <article className="App-body">
-            <NotFound />
+            <NotFound error={"Could not find anything for this URL."} />
           </article>
         </Route>
       </Switch>
@@ -209,25 +194,32 @@ const App = () => {
       style={showAbout ? { overflowY: "hidden", maxHeight: "100vh" } : {}}
     >
       <div className="ie-fixMinHeight">
-        {routes}
-        <About />
-        <footer className="App-footer">
-          <a
-            href="https://discord.gg/yqdgu2Z"
-            rel="noopener noreferrer"
-            target="_BLANK"
-          >
-            Discord
-          </a>
-          <a
-            href="https://www.youtube.com/channel/UClayAs7TxVjMbzBLxBbqyoQ"
-            rel="noopener noreferrer"
-            target="_BLANK"
-          >
-            Youtube
-          </a>
-          <Link to="/credits">Credits</Link>
-        </footer>
+        <ErrorBoundary
+          FallbackComponent={ErrorFallback}
+          onReset={() => {
+            // reset the state of your app so the error doesn't happen again
+          }}
+        >
+          {routes}
+          <About />
+          <footer className="App-footer">
+            <a
+              href="https://discord.gg/yqdgu2Z"
+              rel="noopener noreferrer"
+              target="_BLANK"
+            >
+              Discord
+            </a>
+            <a
+              href="https://www.youtube.com/channel/UClayAs7TxVjMbzBLxBbqyoQ"
+              rel="noopener noreferrer"
+              target="_BLANK"
+            >
+              Youtube
+            </a>
+            <Link to="/credits">Credits</Link>
+          </footer>
+        </ErrorBoundary>
       </div>
     </div>
   );
