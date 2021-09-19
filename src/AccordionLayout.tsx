@@ -34,7 +34,7 @@ export const accordionComponents = {
 const AccordionLayout = ({
   children
 }: PropsWithChildren<Record<string, unknown>>) => {
-  return <Accordion preExpanded={["what_is_5_ymm"]}>{children}</Accordion>;
+  return <Accordion preExpanded={["what_is_6_ymm"]}>{children}</Accordion>;
 };
 
 export default AccordionLayout;
