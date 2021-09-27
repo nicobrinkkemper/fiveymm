@@ -7,20 +7,18 @@ import { Logo } from "Logo";
 import { Button } from "Button";
 import { importMDX } from "mdx.macro";
 import { releaseDays, startDate } from "./useLevelData";
-import YouTube from "react-youtube";
 import { Credits } from "./Credits";
 import { Level } from "./Level";
 import Batches from "./Batches";
 import Batch from "./Batch";
-import { weekTrailers } from "./weekTrailers";
 import { Seo } from "./Seo";
 import { DEFAULT_TITLE, DEFAULT_DESCRIPTION } from "./constants";
 import NotFound from "./NotFound";
 import formatDate from "./formatBatchName";
 import { ErrorBoundary } from "react-error-boundary";
 import { ErrorFallback } from "ErrorFallback";
-import { isSnap } from "environment";
 import { WeekTrailer } from "WeekTrailer";
+import { AboutButton } from "AboutButton";
 
 const Welcome = importMDX.sync("./data/Welcome.mdx");
 
@@ -34,6 +32,7 @@ const BackButton = () => {
         iconPosition="left"
         to={`/`}
         inverted={true}
+        classList={['backTo']}
       >
         Back to Teaser
       </Button>
@@ -46,6 +45,7 @@ const BackButton = () => {
         iconPosition="left"
         to={`/levels/${batchNumber}`}
         inverted={true}
+        classList={['backTo']}
       >
         Back to {formatDate(releaseDays[Number(batchNumber) - 1])}
       </Button>
@@ -57,6 +57,7 @@ const BackButton = () => {
         iconPosition="left"
         to="/levels"
         inverted={true}
+        classList={['backTo']}
       >
         Back to Weeks
       </Button>
@@ -67,6 +68,7 @@ const BackButton = () => {
       iconPosition="left"
       to="/"
       inverted={true}
+      classList={['backTo']}
     >
       Back to Welcome
     </Button>
@@ -83,9 +85,7 @@ const App = () => {
       <header className="App-header">
         <div className="toolbar big">
           <Logo logo="logo_without_card" />
-          <Button inverted={true} icon={"info-inverted"} to="#!/about">
-            About
-          </Button>
+          <AboutButton />
         </div>
         <BackButton />
       </header>
@@ -102,9 +102,7 @@ const App = () => {
           <header className="App-header">
             <div className="toolbar small">
               <Logo small logo="logo_without_card" />
-              <Button inverted={true} icon={"info-inverted"} to="#!/about">
-                About
-              </Button>
+              <AboutButton/>
             </div>
           </header>
           <article className="App-body">
@@ -122,9 +120,7 @@ const App = () => {
           <header className="App-header">
             <div className="toolbar small">
               <Logo small logo="logo_without_card" />
-              <Button inverted={true} icon={"info-inverted"} to="#!/about">
-                About
-              </Button>
+              <AboutButton/>
             </div>
             <BackButton />
           </header>
@@ -136,9 +132,7 @@ const App = () => {
           <header className="App-header">
             <div className="toolbar small">
               <Logo small logo="logo_without_card" />
-              <Button inverted={true} icon={"info-inverted"} to="#!/about">
-                About
-              </Button>
+              <AboutButton/>
             </div>
             <WeekTrailer />
             <BackButton />
@@ -151,9 +145,7 @@ const App = () => {
           <header className="App-header">
             <div className="toolbar big">
               <Logo logo="logo_without_card" />
-              <Button inverted={true} icon={"info-inverted"} to="#!/about">
-                About
-              </Button>
+              <AboutButton/>
             </div>
             <BackButton />
           </header>
@@ -166,9 +158,7 @@ const App = () => {
           <header className="App-header">
             <div className="toolbar big">
               <Logo />
-              <Button inverted={true} icon={"info-inverted"} to="#!/about">
-                About
-              </Button>
+              <AboutButton/>
             </div>
           </header>
           <article className="App-body">

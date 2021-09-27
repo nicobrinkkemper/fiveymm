@@ -1,5 +1,5 @@
 import "./Level.css";
-import React, { useEffect } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import Card from "./Card";
 import { useLevelData, releaseDays } from "./useLevelData";

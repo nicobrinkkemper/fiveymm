@@ -70,7 +70,7 @@ const Batch = () => {
               <Seo
                 description={`Week ${batchNumber} of 6YMM has started! In this week's trailer we show off eight new levels: ${humanReadableArray(
                   levelNames
-                )}. Celebrating Five years of MarioMaker! Week ${batchNumber} released at ${releaseDay.toDateString()}.`}
+                )}. Celebrating Six years of MarioMaker! Week ${batchNumber} released at ${releaseDay.toDateString()}.`}
                 title={`${DEFAULT_TITLE} | Week ${batchNumber}`}
               />
             </Card>

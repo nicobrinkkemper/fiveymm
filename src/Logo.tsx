@@ -1,24 +1,22 @@
 import React, { PropsWithChildren } from "react";
 import { Link } from "react-router-dom";
-import logo1x from "./assets/logo_with_card1x.png";
-import logo2x from "./assets/logo_with_card2x.png";
-import logo3x from "./assets/logo_with_card3x.png";
-import simpleLogo1x from "./assets/logo_without_card1x.png";
-import simpleLogo2x from "./assets/logo_without_card2x.png";
-import simpleLogo3x from "./assets/logo_without_card3x.png";
+import logo1x from "./assets/logo_with_card1x.webp";
+import logo2x from "./assets/logo_with_card2x.webp";
+import logo3x from "./assets/logo_with_card3x.webp";
+import simpleLogo1x from "./assets/logo_without_card1x.webp";
+import simpleLogo2x from "./assets/logo_without_card2x.webp";
+import simpleLogo3x from "./assets/logo_without_card3x.webp";
 const logos = {
   logo_with_card: (
     <picture className="Picture">
-      <source srcSet={`${logo2x} 2x, ${logo3x} 3x`} />
-      <img src={logo1x} className="Picture-img" alt="logo" width="100%" />
+      <source srcSet={`${logo1x} 272w,${logo2x} 528w, ${logo3x} 1096w`} />
+      <img src={logo1x} className="Picture-img" alt="logo" width="100%" height='auto' />
     </picture>
   ),
   logo_without_card: (
     <picture className="Picture">
-      <source
-        srcSet={`${simpleLogo2x} 2x, ${simpleLogo3x} 3x`}
-      />
-      <img src={simpleLogo1x} className="Picture-img" alt="logo" width="100%" />
+      <source srcSet={`${simpleLogo1x} 272w,${simpleLogo2x} 528w, ${simpleLogo3x} 1096w`} />
+      <img src={simpleLogo1x} className="Picture-img" alt="logo" width="100%" height='auto' />
     </picture>
   )
 };

@@ -1,7 +1,15 @@
 import { isSnap } from "environment";
 import { useParams } from "react-router";
 import YouTube from "react-youtube";
-import { weekTrailers } from "weekTrailers";
+export const weekTrailers = [
+  "b26QvbP4MUI",
+  "-f83uRDCZpA",
+  "ouKbaTu5YKc",
+  "13Sb6V8ydPM",
+  "G4mhHeXk3k0",
+  "lANqCC2xPoo",
+  "rvBtTv9aeo0"
+];
 
 const WeekTrailer = () => {
     const { batchNumber } = useParams<{ batchNumber: string }>();

@@ -86,6 +86,7 @@ export type ButtonProps = PropsWithChildren<{
   id?: string;
   icon: keyof typeof icons;
   iconPosition?: "left" | "right";
+  classList ?: string[]
 }>;
 
 const Button = ({
@@ -95,10 +96,11 @@ const Button = ({
   to,
   inverted = false,
   iconPosition = "right",
+  classList = [],
   id,
 }: ButtonProps) => {
   const Icon = createIcon(icon);
-  const classes = ["Button", icon];
+  const classes = ["Button", icon, ...classList];
   if (primary) classes.push("primary");
   if (inverted) classes.push("inverted");
   if (typeof icons[icon] === "string") classes.push("hasIcon");
@@ -129,9 +131,11 @@ const Button = ({
   }
   return (
     <LinkOrAnchor {...props}>
+      <span className="Button-inner">
       {iconPosition === "left" ? <Icon /> : null}
       {children}
       {iconPosition !== "left" ? <Icon /> : null}
+      </span>
     </LinkOrAnchor>
   );
 };

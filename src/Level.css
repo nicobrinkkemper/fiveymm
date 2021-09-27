@@ -123,19 +123,9 @@
   white-space: pre-line;
   padding-top: 1rem;
 }
-.Level .Button.arrow-left {
-  margin: 0 1rem 0 0;
-  width: 5.125rem;
-}
 .Level .Icon.arrow-left {
   margin: 0;
 }
-
-.Level .arrow-right {
-  align-self: flex-end;
-  justify-self: flex-end;
-}
-
 .Level .navigation.hasNextLevel {
   display: flex;
   justify-content: flex-end;
@@ -143,4 +133,19 @@
 .Level .navigation.hasNextLevel.hasPreviousLevel {
   display: flex;
   justify-content: space-between;
+}
+.Level .navigation {
+  display:flex;
+  flex-flow: row;
+}
+.Level .navigation .Button.arrow-right {
+  align-self: flex-end;
+  justify-self: flex-end;
+}
+.Level .navigation.hasNextLevel.hasPreviousLevel .Button.arrow-right{
+  margin-left:0;
+}
+.Level .navigation .Button.arrow-left {
+  max-width: 5.125rem;
+  margin-right:0;
 }

@@ -24,7 +24,7 @@
   flex-direction: column;
   -ms-flex-direction: column;
   text-align: center;
-  background-image: url("assets/bg.png?size=512");
+  background-image: url("assets/bg.webp");
   background-color: #0C2338;
   background-repeat: repeat;
   background-size: 512px 512px;
@@ -39,11 +39,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top:1em;
   padding-bottom:1em;
-  
-  width: calc(100vw - 2em);
-  max-width: 30rem;
+  max-width: calc(100% - 1rem);
+  width: 30rem;
 }
 .App-body {
   flex: 1 0 0;
