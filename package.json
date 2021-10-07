@@ -101,6 +101,7 @@
     "webpack-cli": "^4.8.0"
   },
   "dependencies": {
-    "react-helmet-async": "^1.1.2"
+    "react-helmet-async": "^1.1.2",
+    "type-guard-helpers": "^1.0.0"
   }
 }

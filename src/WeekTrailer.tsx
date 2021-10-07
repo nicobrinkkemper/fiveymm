@@ -8,12 +8,14 @@ export const weekTrailers = [
   "13Sb6V8ydPM",
   "G4mhHeXk3k0",
   "lANqCC2xPoo",
-  "rvBtTv9aeo0"
+  "rvBtTv9aeo0",
+  "oR_7lE_Zx2c"
 ];
 
 const WeekTrailer = () => {
     const { batchNumber } = useParams<{ batchNumber: string }>();
     const weekTrailer = weekTrailers[Number(batchNumber) - 1];
+    if(!weekTrailer) return <p style={{fontSize:'1em',width: '100%'}}>Video coming soon!</p>;
     if (isSnap) {
       return (
         <div className="youtubeFlexDisable">

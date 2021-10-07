@@ -187,7 +187,7 @@ const getLinkTags = ({ path }: getLinkTagsProps) => [
   },
   { rel: "msapplication-TileColor", content: `#F6F7F8` },
   { name: "theme-color", content: `#F6F7F8` },
-  { rel: "manifest", href: `/site.manifest` },
+  { rel: "manifest", href: `/site.webmanifest` },
 ];
 const Seo = ({
   schema,

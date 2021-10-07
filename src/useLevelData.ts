@@ -1,5 +1,6 @@
 import memoizeOne from "memoize-one";
 import data from "./data/5YMM Master Spreadsheet - Sheet1.json";
+
 /**
  * BATCH 1 = "15 Aug 2021 15:00:00 GMT"
  * BATCH 2 = "22 Aug 2021 15:00:00 GMT"
@@ -19,7 +20,8 @@ export const releaseDays = [
   new Date(Date.parse("12 Sep 2021 15:00:00 GMT")),
   new Date(Date.parse("19 Sep 2021 15:00:00 GMT")),
   new Date(Date.parse("26 Sep 2021 15:00:00 GMT")),
-  new Date(Date.parse("4 Oct 2021 15:00:00 GMT"))
+  new Date(Date.parse("3 Oct 2021 15:00:00 GMT")),
+  new Date(Date.parse("10 Oct 2021 15:00:00 GMT"))
 ];
 
 // add any field here from the csv headers to make it a valid level value

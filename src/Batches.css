@@ -39,7 +39,7 @@
     background-color: #194670;
     color:inherit
 }
-.Batches .Batch .new, .Batch.isUnreleased .unreleased{
+.Batches .Batch .new, .Batch.isUnreleased .unreleased, .Batch.isUnreleased .final {
     line-height: .8125rem;
     border-radius: .25rem;
     font-size:.75rem;
@@ -52,6 +52,10 @@
 .Batches .Batch.isNew .new{
     background-color: #AF044A;
     color:#F6F7F8;
+}
+.Batches .Batch  .final{
+    margin-left:1em;
+    background-color: black;
 }
 .Batches .Batch .unreleased{
     background-color: black;

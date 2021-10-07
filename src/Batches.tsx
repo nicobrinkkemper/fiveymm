@@ -1,4 +1,3 @@
-
 import "./Batches.css";
 import React from "react";
 import Card from "./Card";
@@ -16,16 +15,16 @@ function Batches() {
         const isNew = levelData.newestBatch === i;
         const isUnreleased =
           levelData.releasedBatches.indexOf(releaseDay) === -1;
+        const isFinalWeek = releaseDays.indexOf(releaseDay) === releaseDays.length - 1;
         if (isNew) classes.push("isNew");
-        else if (isUnreleased) classes.push("isUnreleased");
+        if (isUnreleased) classes.push("isUnreleased");
+        if (isFinalWeek) classes.push("isFinal");
         return (
           <Card key={String(i)} disabled={isUnreleased} to={`/levels/${i + 1}`}>
             <div className={classes.join(" ")}>
               <span className="batchNumber">{i + 1}</span>
               <div className="releaseInfo">
-                <span className="releaseDay">
-                  {formatDate(releaseDay)}
-                </span>
+                <span className="releaseDay">{formatDate(releaseDay)}</span>
                 <span className="batchLevelAmount">
                   {isUnreleased ? 8 : levelData.batch(i + 1).length} levels
                 </span>
@@ -33,6 +32,9 @@ function Batches() {
               {isNew ? <span className="new">New</span> : null}
               {isUnreleased ? (
                 <span className="unreleased">Unreleased</span>
+              ) : null}
+              {isFinalWeek ? (
+                <span className="final">Final Week</span>
               ) : null}
             </div>
           </Card>
