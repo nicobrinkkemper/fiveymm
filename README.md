@@ -5,23 +5,18 @@ For 4YMM, see https://github.com/nicobrinkkemper/4ymm
 
 ## Prerequisites
 - Have `npm` installed. It comes with Node.js which you can install from their site https://nodejs.org/en/
-- If you get pupperteer issues when building, install following `sudo apt-get install chromium-browser` and/or install any missing package listed in error message, for example
-  ```sh
-  sudo apt-get install libxcursor1
-  sudo apt-get install libxss1
-  sudo apt install libgtk-3-0
-  ```
 ## Installing
 
 - `npm install` - install all dependencies in `node_modules`
 - `npm run start` - run development mode
 - OR `npm run build` - build final product in `build folder`
+- OR `npm run test` - test if everything is working
 
 ## Deploying strategy
 
-We reupload the site to FTP after any change. To build the site, run: `npm run build`. The contents of the build folder need to be uploaded. For a single release of levels, only the static folder and all the .html files and level folders need to be reuploaded, as well as any new level images.
+To build the site, run: `npm run build`. The contents of the build folder need to be uploaded.
 
- After this step navigatable pages will be prerendered and saved to html inside the `/build` folder. Levels that are not released yet will not be prerendered. Because of this, it is important to build the site both before and right after release. While it isn't a strict neccesisty for the website to have prerendered pages, it is a nice benefit for SEO and non-javascript users and makes reloading/sharing pages faster to render initially.
+ After a `build` navigatable pages will be pre-rendered and saved to html inside the `/build` folder. Levels that are not released will not be pre-rendered.
 
 This site is designed to run without any server-side scripting. It can be deployed to any server that hosts simple static files. The site works best when the server passes through pages that exist, but redirect to homepage when they do not. This can be achieved through .htaccess or other means depending on the server:
 ```
@@ -33,7 +28,7 @@ This site is designed to run without any server-side scripting. It can be deploy
 </ifModule>
 ```
 
-## Building with docker
+## Building with Docker
 
 If you don't wish to deal with installing node, you can use Docker instead. The dockerfile isn't used for deploying, yet.
 Install docker (ie. docker for desktop) and run command:
@@ -55,7 +50,7 @@ This will copy the site to `./docker-build` folder
 We update the CSV with level codes and descriptions every Sunday before 15:00 GMT. To see the dates for each batch, see file `src/useLevelData.ts`. 
 - download csv from this page https://docs.google.com/spreadsheets/d/1Yg9K2sKsn9UpJrJlQeDBILJXGAX0kHorfb5rnFY4Zd0/edit#gid=0
 - replace csv in `src/data` (simply copy paste the whole document so you don't have to mess with filenames)
-- Type `npm run csvtojson`, this is also ran whenever you `start` or `build`.
+- Type `npm run csvtojson`, this is also ran once whenever you `start` or `build`.
 
 ## Add images
 - Download maker images https://drive.google.com/drive/folders/15xUPrza1H7Y9KifPfCpBapP0SyXnydog

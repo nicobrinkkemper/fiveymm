@@ -3,15 +3,11 @@
  RewriteCond %{HTTPS} off
  RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 </IfModule>
-# i.e.  http://www.example.com/foo/ to https://www.example.com/foo/
-# The leading slash is made optional so that this will work either in httpd.conf
-# or .htaccess context
 
-
-###GEITJE'S REDIRECT
 <ifModule mod_rewrite.c>
     RewriteEngine On
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule (.*) index.html [QSA,L,R=404]
+    RewriteRule (.*) index.html [R=404,QSA,L]
 </ifModule>
+ErrorDocument 404 /404.html

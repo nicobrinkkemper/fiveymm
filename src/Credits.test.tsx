@@ -1,6 +1,5 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import Credits from './Credits';
 import AppWrapper from 'AppWrapper';
 
 test('renders Trailers SECTION', () => {
