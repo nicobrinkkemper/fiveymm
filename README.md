@@ -55,6 +55,7 @@ This will copy the site to `./docker-build` folder
 We update the CSV with level codes and descriptions every Sunday before 15:00 GMT. To see the dates for each batch, see file `src/useLevelData.ts`. 
 - download csv from this page https://docs.google.com/spreadsheets/d/1Yg9K2sKsn9UpJrJlQeDBILJXGAX0kHorfb5rnFY4Zd0/edit#gid=0
 - replace csv in `src/data` (simply copy paste the whole document so you don't have to mess with filenames)
+- Type `npm run csvtojson`, this is also ran whenever you `start` or `build`.
 
 ## Add images
 - Download maker images https://drive.google.com/drive/folders/15xUPrza1H7Y9KifPfCpBapP0SyXnydog
@@ -85,8 +86,6 @@ See below `Available Scripts` to get you up and running. These scripts correspon
 - The files ending with `.mdx` located in `src/data` can be used to update the copy of the website. These files work the same as the `.csv` file located in `src/data`, meaning the `.mdx` files are also incoorporated in the final bundle in the `build` folder. You can find these files on the Google Drive.
 
 - Futher changes to release dates and level data can be made in the file `src/useLevelData.ts`. This file acts as a sort-of runtime database, and offers some uttility functions to extract meaningfull data from the `.csv` file. Components of the App use this file to statically import data from the spreadsheet. (no async stuff whatsoever) Any date changed here will reflect when each batch will be released, and may be changed individually. This can be usefull to preview the site, by changing the dates you are able to see how things will look like once the levels are released.
-
-- `Craco` is used to *hack* `create-react-app` to enable `.csv` reading abilities, allowing us to statically read the `.csv` contents as it would be a `.json` file. This eliminates any asynchronous loading of data, and let's us do static rendering of pages to `.html` files.
 
 - Changes to files in `src/data` will not be reflected in development mode. However you do not have to restart the process of `npm run start`, you can simply do a save command on any of the `.ts` or `.tsx` files, and the change to the data will be reflected automatically. This is a minor annoyance to watch out for when changing files in the `src/data` folder.
 
@@ -149,7 +148,4 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-
-## Craco
-Instead of ejecting the react app to customize webpack behavior, `craco` is used to alter configuration without ejecting. Please never run eject, as you are already able to customize the behavior through `craco`. This is used so that `.csv` files can be easily imported and parsed during compile time. Webpack will read the csv file, and the contents will be available as a JSON object when you import csv files as such `import data from 'MY_CSV_FILE.csv'`
 
