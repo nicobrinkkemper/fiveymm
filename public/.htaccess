@@ -13,5 +13,5 @@
     RewriteEngine On
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule (.*) index.html [QSA,L]
+    RewriteRule (.*) index.html [QSA,L,R=404]
 </ifModule>

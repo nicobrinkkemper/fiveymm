@@ -11,7 +11,7 @@ function Batches() {
   return (
     <div className="Batches">
       {releaseDays.map((releaseDay, i) => {
-        const classes = ["Batch"];
+        const classes = ["BatchCard"];
         const isNew = levelData.newestBatch === i;
         const isUnreleased =
           levelData.releasedBatches.indexOf(releaseDay) === -1;
@@ -29,13 +29,15 @@ function Batches() {
                   {isUnreleased ? 8 : levelData.batch(i + 1).length} levels
                 </span>
               </div>
-              {isNew ? <span className="new">New</span> : null}
-              {isUnreleased ? (
-                <span className="unreleased">Unreleased</span>
-              ) : null}
-              {isFinalWeek ? (
-                <span className="final">Final Week</span>
-              ) : null}
+              <div className="tags">
+                {isNew ? <span className="new">New</span> : null}
+                {isUnreleased ? (
+                  <span className="unreleased">Unreleased</span>
+                ) : null}
+                {isFinalWeek ? (
+                  <span className="final">Lost Levels</span>
+                ) : null}
+              </div>
             </div>
           </Card>
         );

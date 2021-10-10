@@ -1,12 +1,14 @@
-.Batches .Batch{
-    flex-flow: row;
+.Batches .BatchCard{
+  flex-flow: row;
+  display: flex;
 }
 
-.Batches .Batch .batchNumber{
+.Batches .BatchCard .batchNumber{
     display: flex;
     border-radius: 50%;
     height:2.4375rem;
     width:2.4375rem;
+    min-width:2.4375rem;
     font-size: 2rem;
     text-align: center;
     justify-content: center;
@@ -17,49 +19,69 @@
     margin:0 .875rem 0 0;
     font-family: 'SuperMario', sans-serif;
 }
-.Batches .Batch.isNew .batchNumber {
+.Batches .BatchCard.isNew .batchNumber {
     background-color: #AF044A;
 }
-.Batches .Batch .releaseInfo{
+
+.Batches .BatchCard picture {
+    display: flex;
+}
+.Batches .BatchCard picture img {
+    border-radius: 0.25rem;
+}
+.Batches .BatchCard .releaseInfo{
     display: flex;
     flex-flow: column;
     align-items: flex-start;
     justify-content: space-between;
     flex: 1 0 0;
+    justify-content: flex-end;
 }
-.Batches .Batch .releaseDay {
+@media only screen and (max-width: 370px) {
+    .Batches .BatchCard .tags {
+        flex-flow: column;
+    }
+ }
+.Batches .BatchCard .releaseDay {
     font-size:1rem;
     line-height: 1.125rem;
 }
-.Batches .Batch .batchLevelAmount{
+.Batches .BatchCard .batchLevelAmount{
     font-size:.875rem;
     line-height: 1rem;
 }
-.Batches .Batch.isUnreleased .batchNumber{
+.Batches .BatchCard.isUnreleased .batchNumber{
     background-color: #194670;
     color:inherit
 }
-.Batches .Batch .new, .Batch.isUnreleased .unreleased, .Batch.isUnreleased .final {
+.Batches .BatchCard .new, .BatchCard.isUnreleased .unreleased, .BatchCard.isFinal .final {
     line-height: .8125rem;
     border-radius: .25rem;
     font-size:.75rem;
     height:1.375rem;
-    display: flex;
+    display: inline-flex;
     justify-content: center;
     align-items: center; 
     padding:.25rem .5rem;
+    margin:.3rem
 }
-.Batches .Batch.isNew .new{
+.Batches .BatchCard.isNew .new{
     background-color: #AF044A;
     color:#F6F7F8;
 }
-.Batches .Batch  .final{
-    margin-left:1em;
+.Batches .BatchCard  .final{
     background-color: black;
 }
-.Batches .Batch .unreleased{
+.Batches .BatchCard .unreleased{
     background-color: black;
 }
+
+.Batches .BatchCard .tags {
+    padding-top: 0.2rem;
+    padding-right: 0.2rem;
+    display: flex;
+    justify-content: space-between;
+  }
 
 .Batches .Card.disabled{
     background:#0C2338;
@@ -74,3 +96,9 @@
 .Batches .Card.disabled + .Card.disabled + .Card.disabled + .Card.disabled{
     display:none;
 }
+
+@media only screen and (max-width: 370px) {
+    .Batches .BatchCard picture {
+      display: none;
+    }
+  }

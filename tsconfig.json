@@ -7,7 +7,7 @@
       "esnext"
     ],
     "types": [
-      "jest", 
+      "jest",
       "node",
       "webpack-env"
     ],

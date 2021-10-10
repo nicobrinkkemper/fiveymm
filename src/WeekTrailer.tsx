@@ -9,7 +9,8 @@ export const weekTrailers = [
   "G4mhHeXk3k0",
   "lANqCC2xPoo",
   "rvBtTv9aeo0",
-  "oR_7lE_Zx2c"
+  "oR_7lE_Zx2c",
+  "VLiyJwx5T3E"
 ];
 
 const WeekTrailer = () => {
